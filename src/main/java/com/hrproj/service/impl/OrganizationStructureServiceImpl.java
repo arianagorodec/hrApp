@@ -1,0 +1,48 @@
+package com.hrproj.service.impl;
+
+
+import com.hrproj.entity.OrganizationStructure;
+import com.hrproj.repository.OrganizationStructureRepository;
+import com.hrproj.service.OrganizationStructureService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
+public class OrganizationStructureServiceImpl implements OrganizationStructureService {
+    @Autowired
+    private OrganizationStructureRepository organizationStructureRepository;
+
+    @Override
+    public OrganizationStructure addOrganizationStructure(OrganizationStructure organizationStructure) {
+        return organizationStructureRepository.saveAndFlush(organizationStructure);
+    }
+
+    @Override
+    public void deleteById(long id) {
+        organizationStructureRepository.deleteById(id);
+    }
+
+    @Override
+    public OrganizationStructure getById(long id) {
+        return organizationStructureRepository.findById(id);
+    }
+
+    @Override
+    public OrganizationStructure getByDepartment(String name) {
+        return organizationStructureRepository.findByDepartment(name);
+    }
+    @Override
+    public OrganizationStructure getByPost(String name) {
+        return organizationStructureRepository.findByPost(name);
+    }
+
+    @Override
+    public OrganizationStructure editOrganizationStructure(OrganizationStructure organizationStructure) {
+        return organizationStructureRepository.saveAndFlush(organizationStructure);
+    }
+
+    @Override
+    public List<OrganizationStructure> getAll() {
+        return organizationStructureRepository.findAll();
+    }
+}
