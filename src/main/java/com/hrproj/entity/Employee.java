@@ -28,6 +28,14 @@ public class Employee {
     private String patronymic;
     @Column(name = "birthday")
     private Date birthday;
+    @Column(name = "pasp_ser", length = 9)
+    private String pasp_ser;
+    @Column(name = "pasp_id",length = 14)
+    private String pasp_id;
+    @Column(name = "pasp_date")
+    private Date pasp_date;
+    @Column(name = "pasp_who")
+    private String pasp_who;
     @Column(name = "rate")
     private double rate;
     @Column(name = "mobphone")
@@ -36,13 +44,16 @@ public class Employee {
     private String email;
     @Column(name = "bankAccount")
     private String bankAccount;
+    @Column(name = "isWorking")
+    private boolean isWorking;
 
     @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name="id_user", unique = true, nullable = false, updatable = false)
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade = CascadeType.ALL)
-    private Set<OrganizationStructure> posts;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "id_post", nullable = false)
+    private OrganizationStructure post;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade = CascadeType.ALL)
     private Set<Timetable> timetableSet;
@@ -50,7 +61,7 @@ public class Employee {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade = CascadeType.ALL)
     private Set<Allowance> allowances;
 
-    public Employee(String surname, String name, String patronymic, Date birthday, double rate, String mobphone, String email, String bankAccount, User user, Set<OrganizationStructure> posts, Set<Timetable> timetableSet, Set<Allowance> allowances) {
+    public Employee(String surname, String name, String patronymic, Date birthday, double rate, String mobphone, String email, String bankAccount, boolean isWorking, User user, OrganizationStructure post, Set<Timetable> timetableSet, Set<Allowance> allowances) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
@@ -59,8 +70,9 @@ public class Employee {
         this.mobphone = mobphone;
         this.email = email;
         this.bankAccount = bankAccount;
+        this.isWorking = isWorking;
         this.user = user;
-        this.posts = posts;
+        this.post = post;
         this.timetableSet = timetableSet;
         this.allowances = allowances;
     }
@@ -164,11 +176,19 @@ public class Employee {
         this.user = user;
     }
 
-    public Set<OrganizationStructure> getPosts() {
-        return posts;
+    public OrganizationStructure getPost() {
+        return post;
     }
 
-    public void setPosts(Set<OrganizationStructure> posts) {
-        this.posts = posts;
+    public void setPost(OrganizationStructure post) {
+        this.post = post;
+    }
+
+    public boolean isWorking() {
+        return isWorking;
+    }
+
+    public void setWorking(boolean working) {
+        isWorking = working;
     }
 }

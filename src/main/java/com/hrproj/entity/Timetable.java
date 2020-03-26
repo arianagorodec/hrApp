@@ -34,7 +34,7 @@ public class Timetable {
     private Employee employee;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "id_candidate", nullable = false)
+    @JoinColumn(name = "id_candidate", nullable = true)
     private Candidate candidate;
 
     public Timetable() {
