@@ -1,8 +1,7 @@
 package com.hrproj.service.impl;
 
-import com.hrproj.entity.Role;
 import com.hrproj.entity.User;
-import com.hrproj.repository.RoleRepository;
+import com.hrproj.entity.enums.RoleEnum;
 import com.hrproj.repository.UserRepository;
 import com.hrproj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,21 +13,18 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserDetailsService, UserService {
 
-
-
     @PersistenceContext
     private EntityManager em;
     @Autowired
     private UserRepository userRepository;
-    @Autowired
-    RoleRepository roleRepository;
+//    @Autowired
+//    RoleRepository roleRepository;
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -59,7 +55,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             return false;
         }
 
-        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+        user.setRole(RoleEnum.ROLE_USER);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
@@ -67,6 +63,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
 
     public boolean deleteUser(Long userId) {
         if (userRepository.findById(userId).isPresent()) {
+        //if (userRepository.findById(userId)!=null) {
             userRepository.deleteById(userId);
             return true;
         }
@@ -74,7 +71,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     public List<User> usergtList(Long idMin) {
-        return em.createQuery("SELECT u FROM user u WHERE u.id > :paramId", User.class)
+        return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
                 .setParameter("paramId", idMin).getResultList();
     }
 

@@ -24,7 +24,8 @@
         <td>${user.username}</td>
         <td>${user.password}</td>
         <td>
-          <c:forEach items="${user.roles}" var="role">${role.name}; </c:forEach>
+            ${user.role}
+<%--          <c:forEach items="${user.role}" var="role">${role.name}; </c:forEach>--%>
         </td>
         <td>
           <form action="${pageContext.request.contextPath}/admin" method="post">

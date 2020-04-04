@@ -3,10 +3,13 @@ package com.hrproj.entity;
 import com.hrproj.entity.enums.RoleEnum;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -14,8 +17,8 @@ import java.util.Set;
 
 public class User implements UserDetails {
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name= "increment", strategy= "increment")
+    @GeneratedValue(generator = "native")
+    @GenericGenerator(name= "native", strategy= "native")
     @Column(name = "id_user", length = 11, nullable = false)
     private long id;
 
@@ -23,8 +26,9 @@ public class User implements UserDetails {
     private String passwordConfirm;
 
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Role> roles;
+    //@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    @Column(name = "role")
+    private RoleEnum role;
 
     @Column(name="username")
     private String username;
@@ -43,10 +47,10 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String passwordConfirm, Set<Role> roles, String login, String password, Employee employee, Candidate candidate) {
+    public User(String passwordConfirm, RoleEnum role, String username, String password, Employee employee, Candidate candidate) {
         this.passwordConfirm = passwordConfirm;
-        this.roles = roles;
-        this.username = login;
+        this.role = role;
+        this.username = username;
         this.password = password;
         this.employee = employee;
         this.candidate = candidate;
@@ -112,7 +116,11 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return (Collection<? extends GrantedAuthority>) getRoles();
+        List<GrantedAuthority> list = new ArrayList<GrantedAuthority>();
+
+        list.add(new SimpleGrantedAuthority(role.getAuthority()));
+
+        return list;
     }
 
     public String getPasswordConfirm() {
@@ -123,12 +131,12 @@ public class User implements UserDetails {
         this.passwordConfirm = passwordConfirm;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public RoleEnum getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(RoleEnum role) {
+        this.role = role;
     }
 
     @Override

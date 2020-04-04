@@ -40,8 +40,6 @@ public class Employee {
     private double rate;
     @Column(name = "mobphone")
     private String mobphone;
-    @Column(name = "email")
-    private String email;
     @Column(name = "bankAccount")
     private String bankAccount;
     @Column(name = "isWorking")
@@ -61,14 +59,13 @@ public class Employee {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade = CascadeType.ALL)
     private Set<Allowance> allowances;
 
-    public Employee(String surname, String name, String patronymic, Date birthday, double rate, String mobphone, String email, String bankAccount, boolean isWorking, User user, OrganizationStructure post, Set<Timetable> timetableSet, Set<Allowance> allowances) {
+    public Employee(String surname, String name, String patronymic, Date birthday, double rate, String mobphone,  String bankAccount, boolean isWorking, User user, OrganizationStructure post, Set<Timetable> timetableSet, Set<Allowance> allowances) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
         this.birthday = birthday;
         this.rate = rate;
         this.mobphone = mobphone;
-        this.email = email;
         this.bankAccount = bankAccount;
         this.isWorking = isWorking;
         this.user = user;
@@ -150,14 +147,6 @@ public class Employee {
 
     public void setMobphone(String mobphone) {
         this.mobphone = mobphone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getBankAccount() {
