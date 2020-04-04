@@ -1,16 +1,82 @@
 package com.hrproj.service.impl;
 
+import com.hrproj.entity.Role;
 import com.hrproj.entity.User;
+import com.hrproj.repository.RoleRepository;
 import com.hrproj.repository.UserRepository;
 import com.hrproj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
-public class UserServiceImpl implements UserService {
+@Service
+public class UserServiceImpl implements UserDetailsService, UserService {
 
+
+
+    @PersistenceContext
+    private EntityManager em;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    RoleRepository roleRepository;
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByUsername(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+
+        return user;
+    }
+
+    public User findUserById(Long userId) {
+        Optional<User> userFromDb = userRepository.findById(userId);
+        return userFromDb.orElse(new User());
+    }
+
+    public List<User> allUsers() {
+        return userRepository.findAll();
+    }
+
+    public boolean saveUser(User user) {
+        User userFromDB = userRepository.findByUsername(user.getUsername());
+
+        if (userFromDB != null) {
+            return false;
+        }
+
+        user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+        return true;
+    }
+
+    public boolean deleteUser(Long userId) {
+        if (userRepository.findById(userId).isPresent()) {
+            userRepository.deleteById(userId);
+            return true;
+        }
+        return false;
+    }
+
+    public List<User> usergtList(Long idMin) {
+        return em.createQuery("SELECT u FROM user u WHERE u.id > :paramId", User.class)
+                .setParameter("paramId", idMin).getResultList();
+    }
 
     @Override
     public User addUser(User user) {
@@ -23,8 +89,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getByLogin(String login) {
-        return userRepository.findByLogin(login);
+    public User getByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 
     @Override
@@ -32,8 +98,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.saveAndFlush(user);
     }
 
-    @Override
-    public List<User> getAll() {
-        return userRepository.findAll();
-    }
+//    @Override
+//    public List<User> getAll() {
+//        return userRepository.findAll();
+//    }
 }
