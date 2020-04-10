@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +10,7 @@
 <body>
 <div>
     <h2>Новости <br> Только для залогинившихся пользователей.</h2>
-    <a href="/">Главная</a>
+    <a href="/logout">Выйти</a>
 </div>
 </body>
 </html>
