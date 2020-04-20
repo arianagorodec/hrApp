@@ -2,6 +2,7 @@ package com.hrproj.controller;
 
 import com.hrproj.entity.User;
 import com.hrproj.service.UserService;
+import com.hrproj.service.impl.EmployeeServiceImpl;
 import com.hrproj.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class RegistrationController {
 
     @Autowired
     private UserServiceImpl userService;
+
+
+
 
     @GetMapping("/registration")
     public String registration(Model model) {
@@ -36,6 +40,7 @@ public class RegistrationController {
             model.addAttribute("passwordError", "Пароли не совпадают");
             return "registration";
         }
+//        System.out.println(userForm.getBirthday());
         if (!userService.saveUser(userForm)){
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
             return "registration";
