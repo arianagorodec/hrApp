@@ -16,4 +16,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     Employee findByName(@Param("name") String name);
     @Query("select e from Employee e where e.bankAccount = :bankAccount")
     Employee findByBankAccount(@Param("bankAccount") String bankAccount);
+//    @Query("select e from Employee e where e.pasp_id = :idP")
+//    Employee findByPassportId(@Param("pasp_id") String idP);
+
 }

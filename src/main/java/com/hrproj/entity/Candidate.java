@@ -22,14 +22,16 @@ public class Candidate {
     private String surname;
     @Column(name = "name")
     private String name;
-    @Column(name = "patronymic")
-    private String patronymic;
     @Column(name = "birthday")
     private Date birthday;
     @Column(name = "mob_phone")
     private String mobphone;
     @Column(name = "email")
     private String email;
+    @Column(name = "gender")
+    private String gender;
+    @Column(name="photo")
+    private String photo;
 
     @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name="id_user", unique = true, nullable = false, updatable = false)
@@ -41,13 +43,13 @@ public class Candidate {
     public Candidate() {
     }
 
-    public Candidate(String surname, String name, String patronymic, Date birthday, String mobphone, String email, User user, Set<Timetable> timetableSet) {
+    public Candidate(String surname, String name, Date birthday, String mobphone, String email,  String gender, User user, Set<Timetable> timetableSet) {
         this.surname = surname;
         this.name = name;
-        this.patronymic = patronymic;
         this.birthday = birthday;
         this.mobphone = mobphone;
         this.email = email;
+        this.gender = gender;
         this.user = user;
         this.timetableSet = timetableSet;
     }
@@ -68,6 +70,13 @@ public class Candidate {
         this.id = id;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public String getSurname() {
         return surname;
@@ -83,14 +92,6 @@ public class Candidate {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
     }
 
     public Date getBirthday() {
@@ -123,5 +124,13 @@ public class Candidate {
 
     public void setTimetableSet(Set<Timetable> timetableSet) {
         this.timetableSet = timetableSet;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

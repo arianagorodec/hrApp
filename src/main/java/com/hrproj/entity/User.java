@@ -7,10 +7,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name="user")
@@ -20,7 +17,7 @@ public class User implements UserDetails {
     @GeneratedValue(generator = "native")
     @GenericGenerator(name= "native", strategy= "native")
     @Column(name = "id_user", length = 11, nullable = false)
-    private long id;
+    private long id_user;
 
     @Transient
     private String passwordConfirm;
@@ -34,17 +31,39 @@ public class User implements UserDetails {
     private String username;
     @Column(name="password")
     private String password;
+    @Column(name="activationCode")
+    private String activationCode;
+
 //    @Column(name="access")
 //    @Enumerated(EnumType.STRING)
  //   private RoleEnum access;
 
-    @OneToOne(optional = false, mappedBy="user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy="user", cascade = CascadeType.ALL)
     public Employee employee;
 
-    @OneToOne(optional = false, mappedBy="user", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy="user", cascade = CascadeType.ALL)
     private Candidate candidate;
 
+    //for registration
+    @Transient
+    private Person person=new Person();
+    @Transient
+    String day;
+    @Transient
+    String month;
+    @Transient
+    String year;
+
+
+
     public User() {
+    }
+
+    public User(String passwordConfirm, RoleEnum role, String username, String password) {
+        this.passwordConfirm = passwordConfirm;
+        this.role = role;
+        this.username = username;
+        this.password = password;
     }
 
     public User(String passwordConfirm, RoleEnum role, String username, String password, Employee employee, Candidate candidate) {
@@ -65,11 +84,11 @@ public class User implements UserDetails {
     }
 
     public long getId() {
-        return id;
+        return id_user;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.id_user = id;
     }
 
     public void setUsername(String username) {
@@ -144,4 +163,69 @@ public class User implements UserDetails {
         return password;
     }
 
+    //for registration
+    public String getIdP() {
+        return person.getId();
+    }
+
+    public void setIdP(String id) {
+        this.person.setId(id);
+    }
+
+    public String getSurname() {
+        return person.getSurname();
+    }
+
+    public void setSurname(String surname) {
+        this.person.setSurname(surname);
+    }
+
+    public String getName() {
+        return person.getName();
+    }
+
+    public void setName(String name) {
+        this.person.setName(name);
+    }
+
+    public String getPatronymic() {
+        return person.getPatronymic();
+    }
+
+    public void setPatronymic(String patronymic) {
+        this.person.setPatronymic(patronymic);
+    }
+
+    public Date getBirthday() {
+        return person.getBirthday();
+    }
+
+    public void setBirthday(Date birthday) {
+        this.person.setBirthday(birthday);
+    }
+
+    public String getMobphone() {
+        return person.getMobphone();
+    }
+
+    public void setMobphone(String mobphone) {
+        this.person.setMobphone(mobphone);
+    }
+
+    public String getGender() {
+        return person.getGender();
+    }
+
+    public void setGender(String gender) {
+        this.person.setGender(gender);
+    }
+
+
+    public String getActivationCode() {
+        return activationCode;
+    }
+
+    public void setActivationCode(String activationCode) {
+        this.activationCode = activationCode;
+    }
 }

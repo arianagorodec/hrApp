@@ -4,10 +4,12 @@ import com.hrproj.entity.Candidate;
 import com.hrproj.repository.CandidateRepository;
 import com.hrproj.service.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class CandidateServiceImpl implements CandidateService {
     @Autowired
     private CandidateRepository candidateRepository;
@@ -15,6 +17,10 @@ public class CandidateServiceImpl implements CandidateService {
     @Override
     public Candidate addCandidate(Candidate candidate) {
         return candidateRepository.saveAndFlush(candidate);
+    }
+
+    public Candidate updateCandidate(Candidate candidate) {
+        return candidateRepository.save(candidate);
     }
 
     @Override

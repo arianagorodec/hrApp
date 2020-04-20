@@ -4,9 +4,11 @@ import com.hrproj.entity.Allowance;
 import com.hrproj.repository.AllowanceRepository;
 import com.hrproj.service.AllowanceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class AllowanceServiceImpl implements AllowanceService {
     @Autowired
     private AllowanceRepository allowanceRepository;

@@ -1,6 +1,8 @@
 package com.hrproj.entity;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -26,6 +28,8 @@ public class Employee {
     private String name;
     @Column(name = "patronymic")
     private String patronymic;
+    @Column(name = "gender")
+    private String gender;
     @Column(name = "birthday")
     private Date birthday;
     @Column(name = "pasp_ser", length = 9)
@@ -38,18 +42,22 @@ public class Employee {
     private String pasp_who;
     @Column(name = "rate")
     private double rate;
+    @Column(name = "email")
+    private String email;
     @Column(name = "mobphone")
     private String mobphone;
     @Column(name = "bankAccount")
     private String bankAccount;
     @Column(name = "isWorking")
-    private boolean isWorking;
+    private int isWorking;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_user", unique = true, nullable = false, updatable = false)
-    private User user;
+    @OneToOne(cascade = CascadeType.ALL)
+    @NotFound(action = NotFoundAction.IGNORE)
+    @JoinColumn(name="id_user", unique = true, nullable = true, updatable = false)
+    private User user = new User();
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "id_post", nullable = false)
     private OrganizationStructure post;
 
@@ -59,11 +67,17 @@ public class Employee {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade = CascadeType.ALL)
     private Set<Allowance> allowances;
 
-    public Employee(String surname, String name, String patronymic, Date birthday, double rate, String mobphone,  String bankAccount, boolean isWorking, User user, OrganizationStructure post, Set<Timetable> timetableSet, Set<Allowance> allowances) {
+    public Employee(String surname, String name, String patronymic, Date birthday, String gender, String email,String pasp_ser, String pasp_id, Date pasp_date, String pasp_who, double rate, String mobphone, String bankAccount, int isWorking, User user, OrganizationStructure post, Set<Timetable> timetableSet, Set<Allowance> allowances) {
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
         this.birthday = birthday;
+        this.email=email;
+        this.gender = gender;
+        this.pasp_ser = pasp_ser;
+        this.pasp_id = pasp_id;
+        this.pasp_date = pasp_date;
+        this.pasp_who = pasp_who;
         this.rate = rate;
         this.mobphone = mobphone;
         this.bankAccount = bankAccount;
@@ -75,6 +89,26 @@ public class Employee {
     }
 
     public Employee() {
+    }
+
+    public Employee(Employee e) {
+        this.setId(e.getId());
+        this.setSurname(e.getSurname());
+        this.setName(e.getName());
+        this.setPatronymic(e.getPatronymic());
+        this.setBirthday(e.getBirthday());
+        this.setGender(e.getGender());
+        this.setEmail(e.getEmail());
+        this.setPasp_ser(e.getPasp_ser());
+        this.setPasp_id(e.getPasp_id());
+        this.setPasp_date(e.getPasp_date());
+        this.setPasp_who(e.getPasp_who());
+        this.setRate( e.getRate());
+        this.setMobphone(e.getMobphone());
+        this.setBankAccount(e.getBankAccount());
+        this.setWorking(e.getWorking());
+        this.setUser(e.getUser());
+        this.setPost(e.getPost());
     }
 
     public Set<Timetable> getTimetableSet() {
@@ -133,8 +167,24 @@ public class Employee {
         this.birthday = birthday;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public double getRate() {
         return rate;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public void setRate(double rate) {
@@ -173,11 +223,43 @@ public class Employee {
         this.post = post;
     }
 
-    public boolean isWorking() {
+    public int getWorking() {
         return isWorking;
     }
 
-    public void setWorking(boolean working) {
+    public void setWorking(int working) {
         isWorking = working;
+    }
+
+    public String getPasp_ser() {
+        return pasp_ser;
+    }
+
+    public void setPasp_ser(String pasp_ser) {
+        this.pasp_ser = pasp_ser;
+    }
+
+    public String getPasp_id() {
+        return pasp_id;
+    }
+
+    public void setPasp_id(String pasp_id) {
+        this.pasp_id = pasp_id;
+    }
+
+    public Date getPasp_date() {
+        return pasp_date;
+    }
+
+    public void setPasp_date(Date pasp_date) {
+        this.pasp_date = pasp_date;
+    }
+
+    public String getPasp_who() {
+        return pasp_who;
+    }
+
+    public void setPasp_who(String pasp_who) {
+        this.pasp_who = pasp_who;
     }
 }

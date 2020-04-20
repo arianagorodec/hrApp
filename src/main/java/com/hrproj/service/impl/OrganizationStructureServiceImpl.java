@@ -5,9 +5,11 @@ import com.hrproj.entity.OrganizationStructure;
 import com.hrproj.repository.OrganizationStructureRepository;
 import com.hrproj.service.OrganizationStructureService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class OrganizationStructureServiceImpl implements OrganizationStructureService {
     @Autowired
     private OrganizationStructureRepository organizationStructureRepository;

@@ -1,7 +1,11 @@
 package com.hrproj.service.impl;
 
+import com.hrproj.entity.Candidate;
+import com.hrproj.entity.Employee;
 import com.hrproj.entity.User;
 import com.hrproj.entity.enums.RoleEnum;
+import com.hrproj.repository.CandidateRepository;
+import com.hrproj.repository.EmployeeRepository;
 import com.hrproj.repository.UserRepository;
 import com.hrproj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +23,18 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserDetailsService, UserService {
 
+
     @PersistenceContext
     private EntityManager em;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CandidateRepository candidateRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
+    @Autowired
+    private EmployeeServiceImpl employeeService;
+
 //    @Autowired
 //    RoleRepository roleRepository;
     @Autowired
@@ -55,9 +67,52 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             return false;
         }
 
-        user.setRole(RoleEnum.ROLE_USER);
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+        if(user.getIdP().equals("0")){
+            user.setRole(RoleEnum.ROLE_USER);
+            user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            //userRepository.save(user);
+
+            Candidate candidate = new Candidate();
+            candidate.setName(user.getName());
+            candidate.setSurname(user.getSurname());
+            candidate.setMobphone(user.getMobphone());
+            candidate.setGender(user.getGender());
+//            candidate.setBirthday(user.getBirthday());
+            candidate.setEmail(user.getUsername());
+            candidate.setUser(user);
+            candidateRepository.save(candidate);
+        }
+        else {
+            List<Employee> employeeList = employeeService.getAll();
+            Employee employee = new Employee();
+            String post = "";
+            for (Employee e : employeeList) {
+                if (e.getPasp_id().equals(user.getIdP())) {
+                    post = e.getPost().getPost();
+                    employee=new Employee(e);
+                    break;
+                }
+            }
+            if (!post.equals("")) {
+                if (post.equals("HR")) {
+                    user.setRole(RoleEnum.ROLE_ACCOUNTANT);
+                } else {
+                    user.setRole(RoleEnum.ROLE_WORKER);
+                }
+                user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+                //userRepository.save(user);
+                employee.setName(user.getName());
+                employee.setSurname(user.getSurname());
+                employee.setMobphone(user.getMobphone());
+                employee.setGender(user.getGender());
+//            employee.setBirthday(user.getBirthday());
+              employee.setEmail(user.getUsername());
+                employee.setUser(user);
+                employeeRepository.save(employee);
+            }
+            else
+                return false;
+        }
         return true;
     }
 
@@ -70,10 +125,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         return false;
     }
 
-    public List<User> usergtList(Long idMin) {
-        return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
-                .setParameter("paramId", idMin).getResultList();
-    }
 
     @Override
     public User addUser(User user) {
@@ -95,7 +146,23 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         return userRepository.saveAndFlush(user);
     }
 
-//    @Override
+    @Override
+    public User getById_user(long id) {
+        return userRepository.findById(id);
+    }
+
+    public boolean activatedUser(String code) {
+        User user = userRepository.findByActivationCode(code);
+        if(user == null)
+            return false;
+
+        user.setActivationCode(null);
+        userRepository.save(user);
+
+        return true;
+    }
+
+    //    @Override
 //    public List<User> getAll() {
 //        return userRepository.findAll();
 //    }

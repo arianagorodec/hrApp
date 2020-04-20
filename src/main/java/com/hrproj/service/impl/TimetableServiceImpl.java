@@ -4,9 +4,11 @@ import com.hrproj.entity.Timetable;
 import com.hrproj.repository.TimetableRepository;
 import com.hrproj.service.TimetableService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TimetableServiceImpl implements TimetableService {
     @Autowired
     private TimetableRepository timetableRepository;
