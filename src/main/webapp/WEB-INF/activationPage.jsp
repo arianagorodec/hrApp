@@ -34,28 +34,27 @@
 					<img src="${contextPath}/resources/images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="POST">
 					<span class="login100-form-title">
 						Forget Password
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
+					<div class="wrap-input100 validate-input" >
+						<div class="password">
+							<form:input type="password" id="password-input" path="password"  placeholder="Введите пароль" name="password"></form:input>
+							<a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+						</div>
 					</div>
 
 					
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Get New Password
+							Set New Password
 						</button>
 					</div>
 					<div class="text-center p-t-12">
 						
-						<a class="txt2" href="index.jsp">
+						<a class="txt2" href="jsp/index.jsp">
 							Выход
 						</a>
 					</div>

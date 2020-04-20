@@ -1,0 +1,10 @@
+<servlet>
+    <description></description>
+    <display-name>AddNote</display-name>
+    <servlet-name>AddNote</servlet-name>
+    <servlet-class>AddNote</servlet-class>
+    <init-param>
+        <param-name>upload</param-name>
+        <param-value>/WEB-INF/upload</param-value>
+    </init-param>
+</servlet>

@@ -1,11 +1,13 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login page</title>
+	<title>Forget Password page</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -26,74 +28,43 @@
 <!--===============================================================================================-->
 </head>
 <body>
-<%--<sec:authorize access="isAuthenticated()">--%>
-<%--	<% response.sendRedirect("/news"); %>--%>
-<%--</sec:authorize>--%>
-<sec:authorize access="hasRole('ROLE_ADMIN')">
-	<% response.sendRedirect("/admin"); %>
-</sec:authorize>
-<sec:authorize access="hasRole('ROLE_USER')">
-	<% response.sendRedirect("/user"); %>
-</sec:authorize>
-<sec:authorize access="hasRole('ROLE_WORKER')">
-	<% response.sendRedirect("/worker"); %>
-</sec:authorize>
-<sec:authorize access="hasRole('ROLE_ACCOUNTANT')">
-	<% response.sendRedirect("/accountant"); %>
-</sec:authorize>
+	
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="${contextPath}/resources/images/img-01.png" alt="IMG">
 				</div>
-
-				<form class="login100-form validate-form"  method="POST" action="/">
+<%--				<form:form method="POST" class="login100-form validate-form" action="#">--%>
+				<form method="post"  class="login100-form validate-form" action="#">
 					<span class="login100-form-title">
-						Member Login
+						Forget Password
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="username" placeholder="Email">
+<%--						<input  class="input100" type="text" name="username" placeholder="Email">--%>
+<%--							<form:input type="text" path="username" class="input100" name="username" placeholder="Email" autofocus="true" ></form:input>--%>
+						<input name="username" type="text" class="input100"  placeholder="Email" autofocus="true">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-envelope" aria-hidden="true"></i>
 						</span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
+<%--					<p>${usernameError}</p>--%>
 
 					<div class="container-login100-form-btn">
-<%--						<sec:authorize access="!isAuthenticated()">--%>
-						<button class="login100-form-btn" type="submit">
-								Login
+						<button type="submit" class="login100-form-btn">
+							Get New Password
 						</button>
-<%--						</sec:authorize>--%>
 					</div>
-
 					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="/restore">
-							Забыли пароль?
+						
+						<a class="txt2" href="/">
+							Выход
 						</a>
 					</div>
-
-					<div class="text-center p-t-136">
-						<sec:authorize access="!isAuthenticated()">
-						<a class="txt2" href="/registration">
-							Create your Account
-							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-						</a>
-						</sec:authorize>
-					</div>
+<%--				</form:form>--%>
 				</form>
 			</div>
 		</div>

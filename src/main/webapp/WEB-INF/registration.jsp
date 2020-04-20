@@ -1,6 +1,8 @@
+<%@ page import="java.sql.Date" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <!DOCTYPE html>
@@ -40,13 +42,15 @@
 									<div class="form-holder">
 										<fieldset>
 											<legend>Имя</legend>
-											<input type="text" class="form-control" id="first-name" name="first-name" placeholder="Имя" required>
+											<form:input type="text" path="name" class="form-control" id="first-name" name="first-name" placeholder="Имя" autofocus="true" ></form:input>
+<%--											<input type="text" class="form-control" id="first-name" name="first-name" placeholder="Имя" required>--%>
 										</fieldset>
 									</div>
 									<div class="form-holder">
 										<fieldset>
 											<legend>Фамилия</legend>
-											<input type="text" class="form-control" id="last-name" name="last-name" placeholder="Фамилия" required>
+											<form:input type="text" path="surname" class="form-control" id="last-name" name="last-name" placeholder="Фамилия" autofocus="true"></form:input>
+<%--											<input type="text" class="form-control" id="last-name" name="last-name" placeholder="Фамилия" required>--%>
 										</fieldset>
 									</div>
 								</div>
@@ -68,7 +72,8 @@
 									<div class="form-holder form-holder-2">
 										<fieldset>
 											<legend>Номер телефона</legend>
-											<input type="text" class="form-control" id="phone" name="phone" placeholder="+375 (29)-999-7777" required>
+											<form:input type="text" path="mobphone" class="form-control" id="phone" name="phone" placeholder="+375 (29)-999-7777" autofocus="true"></form:input>
+<%--											<input type="text" class="form-control" id="phone" name="phone" placeholder="+375 (29)-999-7777" required>--%>
 										</fieldset>
 									</div>
 								</div>
@@ -76,11 +81,13 @@
 								<div class="form-row">
 									<div class="form-h">
 						      	<fieldset>
-								<legend>Пол</legend>			 
-								   <input id="gender-male" type="radio" name="gender" value="male"/>
+								<legend>Пол</legend>
+<%--									<input id="gender-male" type="radio" name="gender" value="male"/>--%>
+									<form:radiobutton path="gender" id="gender-male" name="gender" value="male"/>
 								    <label for="gender-male">Мужсой</label>
-								    
-								    <input id="gender-female" type="radio" name="gender" value="female"required/>
+
+									<form:radiobutton path="gender" id="gender-female" name="gender" value="female"/>
+<%--								    <input id="gender-female" type="radio" name="gender" value="female"required/>--%>
 								    <label for="gender-female">Женский</label>
 								</fieldset>
 							</div>
@@ -89,8 +96,10 @@
 								<div class="form-row form-row-date">
 									<div class="form-holder form-holder-2">
 										<label class="special-label">Дата рождения:</label>
-										<select name="month" id="month">
-											<option value="MM" disabled selected>ДД</option>
+<%--										<form:input type="date" path="birthday" class="form-control" id="birthday" name="birthday" ></form:input>--%>
+										<fmt:format var="day" value="${day}" pattern="DD"/>
+										<select name="day" id="day">
+											<option value="DD" disabled selected>ДД</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -123,21 +132,23 @@
 											<option value="30">30</option>
 											<option value="31">31</option>
 										</select>
-										<select name="date" id="date">
-											<option value="DD" disabled selected>ММ</option>
-											<option value="Feb">Feb</option>
-											<option value="Mar">Mar</option>
-											<option value="Apr">Apr</option>
-											<option value="May">May</option>
-											<option value="Jun">Jun</option>
-											<option value="Jul">Jul</option>
-											<option value="Aug">Aug</option>
-											<option value="Sep">Sep</option>
-											<option value="Oct">Oct</option>
-											<option value="Nov">Nov</option>
-											<option value="Dec">Dec</option>
-											<option value="Jan">Jan</option>
+										<fmt:format var="month" value="${month}" pattern="MM"/>
+										<select name="month" id="month">
+											<option value="MM" disabled selected>ММ</option>
+											<option value="02">Feb</option>
+											<option value="03">Mar</option>
+											<option value="04">Apr</option>
+											<option value="05">May</option>
+											<option value="06">Jun</option>
+											<option value="07">Jul</option>
+											<option value="08">Aug</option>
+											<option value="09">Sep</option>
+											<option value="10">Oct</option>
+											<option value="11">Nov</option>
+											<option value="12">Dec</option>
+											<option value="01">Jan</option>
 										</select>
+										<fmt:format var="year" value="${year}" pattern="YYYY"/>
 										<select name="year" id="year">
 											<option value="YYYY" disabled selected>ГГГГ</option>
 											<option value="2007">2017</option>
@@ -157,8 +168,6 @@
 										</select>
 									</div>
 								</div>
-
-						      
 
 							</div>
 			            </section>
@@ -180,7 +189,8 @@
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-1">
-										<input type="text" name="find_bank" id="find_bank" placeholder="Ваше ID сотрудника" class="form-control" required>
+										<form:input type="text" path="idP" name="find_bank" id="find_bank" placeholder="Ваше ID сотрудника" class="form-control" autofocus="true"></form:input>
+<%--										<input type="text" name="find_bank" id="find_bank" placeholder="Ваше ID сотрудника" class="form-control" required>--%>
 									</div>						
 								</div>
 
@@ -264,7 +274,8 @@
 						<a class="txt2" href="/">
 							Выход
 						</a>
-				<button type="submit" ><a href="/">Зарегистрироваться</a></button>
+				<button type="submit" >Зарегистрироваться</button>
+<%--				<button type="submit" ><a href="/">Зарегистрироваться</a></button>--%>
 					</div>
 			                	</div>
 							</div>
