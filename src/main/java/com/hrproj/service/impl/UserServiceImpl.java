@@ -156,10 +156,18 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         if(user == null)
             return false;
 
-        user.setActivationCode(null);
+//        user.setActivationCode(null);
         userRepository.save(user);
 
         return true;
+    }
+
+    public void saveActivatedUser(String code, String password) {
+
+        User user = userRepository.findByActivationCode(code);
+        user.setPassword(bCryptPasswordEncoder.encode(password));
+        user.setActivationCode(null);
+        userRepository.save(user);
     }
 
     //    @Override

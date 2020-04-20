@@ -31,26 +31,34 @@ public class RestoreController {
         User user = userService.getByUsername(username);
 
         if (user == null) {
-            model.addAttribute("usernameError", "Пользователь с таким email не существует");
-            return "redirect:/restore";
+            model.addAttribute("usernameError", "Пользователя с таким email не существует");
+            return restorePass(model);
         } else {
             user.setActivationCode(UUID.randomUUID().toString());
             userService.editUser(user);
 
-            String message = String.format("Здравствуйте, $s!\n"
+            String message = String.format("Здравствуйте, %s!\n"
                     + "Вот ваша ссылка на восстановление пароля: " +
-                    "http://localhost:8080/activate/%s", user.getUsername(), user.getActivationCode());
+                    "http://localhost:8080/restore/%s", user.getUsername(), user.getActivationCode());
             mailSender.sendActivationPage(username, message);
-
-            //}
-
-            return "/";
+            model.addAttribute("usernameError", "Сообщение отправлено на почту!");
+            return restorePass(model);
         }
     }
 
     @GetMapping("/restore/{code}")
     public String restore(Model model, @PathVariable String code){
         boolean isActivated = userService.activatedUser(code);
-        return "/logout";
+        if(isActivated) {
+            return "activation";
+        }
+        else
+            return "index";
+    }
+
+    @PostMapping("/restore/{code}")
+    public String restorePass(@RequestParam("password") String password, @PathVariable String code, Model model) {
+        userService.saveActivatedUser(code,password);
+        return "index";
     }
 }

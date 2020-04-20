@@ -39,7 +39,7 @@
       </tr>
     </c:forEach>
   </table>
-  <a href="/">Главная</a>
+  <a href="/logout">Выйти</a>
 </div>
 </body>
 </html>

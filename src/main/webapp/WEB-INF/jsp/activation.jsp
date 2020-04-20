@@ -34,21 +34,21 @@
 					<img src="${contextPath}/resources/images/img-01.png" alt="IMG">
 				</div>
 
-				<form class="login100-form validate-form" method="POST">
+				<form class="login100-form validate-form" method="POST" action="#">
 					<span class="login100-form-title">
 						Forget Password
 					</span>
 
 					<div class="wrap-input100 validate-input" >
 						<div class="password">
-							<form:input type="password" id="password-input" path="password"  placeholder="Введите пароль" name="password"></form:input>
+							<input type="password" class="input100"  id="password-input" path="password"  placeholder="Введите пароль" name="password">
 							<a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
 						</div>
 					</div>
 
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button type="submit" class="login100-form-btn">
 							Set New Password
 						</button>
 					</div>

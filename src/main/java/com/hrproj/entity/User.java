@@ -31,7 +31,7 @@ public class User implements UserDetails {
     private String username;
     @Column(name="password")
     private String password;
-    @Column(name="activationCode")
+    @Column(name="activation_code")
     private String activationCode;
 
 //    @Column(name="access")
