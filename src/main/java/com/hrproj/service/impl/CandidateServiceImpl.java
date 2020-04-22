@@ -4,6 +4,8 @@ import com.hrproj.entity.Candidate;
 import com.hrproj.repository.CandidateRepository;
 import com.hrproj.service.CandidateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,5 +61,11 @@ public class CandidateServiceImpl implements CandidateService {
     @Override
     public List<Candidate> getAll() {
         return candidateRepository.findAll();
+    }
+
+    public Candidate getInfoCandidate(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Candidate candidate = getByEmail(auth.getName());
+        return candidate;
     }
 }

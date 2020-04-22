@@ -40,6 +40,9 @@ public class Candidate {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade = CascadeType.ALL)
     private Set<Timetable> timetableSet;
 
+    @OneToOne(mappedBy="candidate", cascade = CascadeType.ALL)
+    public Anketa anketa;
+
     public Candidate() {
     }
 
@@ -132,5 +135,13 @@ public class Candidate {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public Anketa getAnketa() {
+        return anketa;
+    }
+
+    public void setAnketa(Anketa anketa) {
+        this.anketa = anketa;
     }
 }

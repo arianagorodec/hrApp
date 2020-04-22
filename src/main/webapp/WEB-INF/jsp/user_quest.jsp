@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!DOCTYPE html>
@@ -73,7 +74,7 @@
             <div class="templatemo-content-widget white-bg col-2">
               <i class="fa fa-times"></i>
               <div class="square"></div>
-              <h2 class="templatemo-inline-block">Инструкция для пользвователя</h2><hr>
+              <h2 class="templatemo-inline-block">Инструкция для пользователя</h2><hr>
               <p>В данном раздели вы можете пройти анкетирование и дать нам более полную информацию о вас. Мы обязуемся предоставить конфеденциальность этим данным и не передовать их третьим лицам, за предалами нашего банковского учереждения, без вашего согласия.</p>
               <p>Для того что бы закрыть данную справку нажмите на крестик в верхнем правом углу.</p>              
             </div>                   
@@ -88,8 +89,8 @@
                   <h2 class="text-uppercase">Ваша анкета</h2>
                         <section class="home_banner_area">
             <div class="container box_1620">
-
-<form class="form2">
+<%--<form class="form2" method="POST" >--%>
+    <form:form method="POST" modelAttribute="anketa" class="form2" action="#" enctype = "multipart/form-data">
       <section class="intro first"><p><span lang="RU">Здравствуйте, <span>${name}</span></span></p><p><span lang="RU">потратьте, пожалуйста, несколько минут своего времени на заполнение следующей анкеты.</span></p><p><span lang="RU">Данная информация может помочь вам при трудоустройстве в наше банковское учереждение.</span></p>
 </section>
 
@@ -98,8 +99,10 @@
    <legend><p class="step-icon"><span>01</span></p></legend>
    <label>Работали ли вы где-то до этого момента?</label>
    <div>
-     <input name="job" type="radio" value="yes"> Да<br>
-     <input name="job" type="radio" value="no" > Нет.
+<%--     <input name="question1" type="radio" value="Да">Да<br>--%>
+    <form:radiobutton path="question1" value="Да"/>Да<br>
+    <form:radiobutton path="question1" value="Нет"/>Нет
+<%--     <input name="question1" type="radio" value="Нет" > Нет.--%>
      </div>
   </fieldset>
   </div>
@@ -109,8 +112,10 @@
    <legend><p class="step-icon"><span>02</span></p></legend>
    <label>Есть ли у Вас какие-либо вредные привычки?</label>
    <div>
-     <input name="habit" type="radio" value="yes"> Да<br>
-     <input name="habit" type="radio" value="no" > Нет.
+       <form:radiobutton path="question2"  name="question2" value="Да"/>Да<br>
+           <form:radiobutton path="question2"  name="question2" value="Нет"/>Нет
+<%--     <input name="question2" type="radio" value="Да"> Да<br>--%>
+<%--     <input name="question2" type="radio" value="Нет" > Нет.--%>
      </div>
   </fieldset>
 </div>
@@ -120,9 +125,12 @@
    <legend><p class="step-icon"><span>03</span></p></legend>
     <label>Сможете ли Вы работать удалённо, при необходимости (неуспели доделать на работе, опасная эпидемиологическая ситуация и т.д.) ?</label>
     <div>
-     <input name="udalenka" type="radio" value="yes"> Да<br>
-     <input name="udalenk" type="radio" value="no" > Нет.
-</div>
+
+        <form:radiobutton path="question3"  name="question3" value="Да"/>Да<br>
+        <form:radiobutton path="question3"  name="question3" value="Нет"/>Нет
+<%--     <input  name="question3" type="radio" value="Да"> Да<br>--%>
+<%--     <input name="question3" type="radio" value="Нет" > Нет.--%>
+    </div>
   </fieldset>
   </div>
 <div>
@@ -130,10 +138,14 @@
    <legend><p class="step-icon"><span>04</span></p></legend>
         <label>Как вы оцениваете своё умение работать в команде ?</label>
         <div>
-         <input name="assessment" type="radio"> Отлично<br>
-         <input name="assessment" type="radio"> Хорошо <br>
-         <input name="assessment" type="radio"> Удовлетворительно <br>
-         <input name="assessment" type="radio"> Плохо.
+            <form:radiobutton path="question4"  name="assessment" value="Отлично"/>Отлично<br>
+                <form:radiobutton path="question4"  name="assessment" value="Хорошо"/>Хорошо<br>
+                <form:radiobutton path="question4"  name="assessment" value="Удовлетворительно"/>Удовлетворительно<br>
+                <form:radiobutton path="question4"  name="assessment" value="Плохо"/>Плохо
+<%--         <input name="question4" type="radio" value="Отлично"> Отлично<br>--%>
+<%--         <input name="question4" type="radio" value="Хорошо"> Хорошо <br>--%>
+<%--         <input name="question4" type="radio" value="Удовлетворительно"> Удовлетворительно <br>--%>
+<%--         <input name="question4" type="radio" value="Плохо"> Плохо.--%>
         </div>
     </fieldset>
     </div>
@@ -143,10 +155,14 @@
       <div>
         <label>Наскольеко хорошо вы осваиваете новые программные продукты ?</label>
         <div>
-        <input name="program" type="radio"> Несколько часов<br>
-         <input name="program" type="radio"> Несколько дней<br>
-         <input name="program" type="radio"> Несколько недель<br>
-         <input name="program" type="radio"> Несколько лет.
+            <form:radiobutton path="question5"  name="program" value="Несколько часов"/>Несколько часов<br>
+                <form:radiobutton path="question5"  name="program" value="Несколько дней"/>Несколько дней<br>
+                <form:radiobutton path="question5"  name="program" value="Несколько недель"/>Несколько недель<br>
+                <form:radiobutton path="question5"  name="program" value="Несколько лет"/>Несколько лет
+<%--        <input name="question5" type="radio" value="Несколько часов"> Несколько часов<br>--%>
+<%--         <input name="question5" type="radio" value="Несколько дней"> Несколько дней<br>--%>
+<%--         <input name="question5" type="radio" value="Несколько недель"> Несколько недель<br>--%>
+<%--         <input name="question5" type="radio" value="Несколько лет"> Несколько лет.--%>
         </div>
       </div>
     </fieldset>
@@ -156,12 +172,18 @@
    <legend><p class="step-icon"><span>06</span></p></legend>
     <label>Что вы считаете главным в работе?</label>
     <div>
-     <input type="checkbox"> Зарплата<br>
-     <input type="checkbox"> Самореализация<br>
-     <input type="checkbox"> Удовольствие от работы<br>
-     <input type="checkbox"> Хорошоие условия труда<br>
-     <input type="checkbox"> Коллектив<br>
-     <input type="checkbox"> Руководство<br>
+        <form:checkbox path="question6" name="question6" value="Зарплата"/>Зарплата<br>
+        <form:checkbox path="question6" name="question6" value="Самореализация"/> Самореализация<br>
+        <form:checkbox path="question6" name="question6" value="Удовольствие от работы"/> Удовольствие от работы<br>
+        <form:checkbox path="question6" name="question6" value="Хорошоие условия труда"/> Хорошоие условия труда<br>
+        <form:checkbox path="question6" name="question6" value="Коллектив"/> Коллектив<br>
+        <form:checkbox path="question6" name="question6" value="Руководство"/> Руководство<br>
+<%--     <input type="checkbox" name="question6" value="Зарплата"> Зарплата<br>--%>
+<%--     <input type="checkbox" name="question6" value="Самореализация"> Самореализация<br>--%>
+<%--     <input type="checkbox" name="question6" value="Удовольствие от работы"> Удовольствие от работы<br>--%>
+<%--     <input type="checkbox" name="question6" value="Хорошоие условия труда"> Хорошоие условия труда<br>--%>
+<%--     <input type="checkbox" name="question6" value="Коллектив"> Коллектив<br>--%>
+<%--     <input type="checkbox" name="question6" value="Руководство"> Руководство<br>--%>
    </div>
   </fieldset>
 </div>
@@ -170,14 +192,22 @@
    <legend><p class="step-icon"><span>07</span></p></legend>
     <label>Как бы Вы описали себя самого?</label>
     <div>
-     <input type="checkbox"> Общительный<br>
-     <input type="checkbox"> Творческий<br>
-     <input type="checkbox"> Сдержанный<br>
-     <input type="checkbox"> Робкий<br>
-     <input type="checkbox"> Кооперирующий<br>
-     <input type="checkbox"> Руководящий<br>
-     <input type="checkbox"> Действующий<br>
-     <input type="checkbox"> Аналитический
+        <form:checkbox path="question7" name="question7" value="Общительный"/> Общительный<br>
+        <form:checkbox path="question7" name="question7" value="Творческий"/> Творческий<br>
+        <form:checkbox path="question7" name="question7" value="Сдержанный"/> Сдержанный<br>
+        <form:checkbox path="question7" name="question7" value="Робкий"/> Робкий<br>
+        <form:checkbox path="question7" name="question7" value="Кооперирующий"/> Кооперирующий<br>
+        <form:checkbox path="question7" name="question7" value="Руководящий"/> Руководящий<br>
+        <form:checkbox path="question7" name="question7" value="Действующий"/> Действующий<br>
+        <form:checkbox path="question7" name="question7" value="Аналитический"/> Аналитический
+<%--     <input type="checkbox" name="question7" value="Общительный"> Общительный<br>--%>
+<%--     <input type="checkbox" name="question7" value="Творческий"> Творческий<br>--%>
+<%--     <input type="checkbox" name="question7" value="Сдержанный"> Сдержанный<br>--%>
+<%--     <input type="checkbox" name="question7" value="Робкий"> Робкий<br>--%>
+<%--     <input type="checkbox" name="question7" value="Кооперирующий"> Кооперирующий<br>--%>
+<%--     <input type="checkbox" name="question7" value="Руководящий"> Руководящий<br>--%>
+<%--     <input type="checkbox" name="question7" value="Действующий"> Действующий<br>--%>
+<%--     <input type="checkbox" name="question7" value="Аналитический"> Аналитический--%>
    </div>
   </fieldset>
 </div>
@@ -186,14 +216,22 @@
    <legend><p class="step-icon"><span>08</span></p></legend>
     <label>Отметьте то, что Вам интереснее всего</label>
     <div>
-     <input type="checkbox"> Спорт<br>
-     <input type="checkbox"> Наука<br>
-     <input type="checkbox"> Сериалы<br>
-     <input type="checkbox"> Кино<br>
-     <input type="checkbox"> Книги<br>
-     <input type="checkbox"> Музеи<br>
-     <input type="checkbox"> Путешествия<br>
-     <input type="checkbox"> другое
+        <form:checkbox path="question8" name="question8" value="Спорт"/> Спорт<br>
+        <form:checkbox path="question8" name="question8" value="Наука"/> Наука<br>
+        <form:checkbox path="question8" name="question8" value="Сериалы"/> Сериалы<br>
+        <form:checkbox path="question8" name="question8" value="Кино"/> Кино<br>
+        <form:checkbox path="question8" name="question8" value="Книги"/> Книги<br>
+        <form:checkbox path="question8" name="question8" value="Музеи"/> Музеи<br>
+        <form:checkbox path="question8" name="question8" value="Путешествия"/> Путешествия<br>
+        <form:checkbox path="question8" name="question8" value="другое"/> другое
+<%--         <input type="checkbox" name="question8" value="Спорт"> Спорт<br>--%>
+<%--         <input type="checkbox" name="question8" value="Наука"> Наука<br>--%>
+<%--         <input type="checkbox" name="question8" value="Сериалы"> Сериалы<br>--%>
+<%--         <input type="checkbox" name="question8" value="Кино"> Кино<br>--%>
+<%--         <input type="checkbox" name="question8" value="Книги"> Книги<br>--%>
+<%--         <input type="checkbox" name="question8" value="Музеи"> Музеи<br>--%>
+<%--         <input type="checkbox" name="question8" value="Путешествия"> Путешествия<br>--%>
+<%--         <input type="checkbox" name="question8" value="другое"> другое--%>
    </div>
   </fieldset>
 </div>
@@ -204,8 +242,7 @@
         <label>Сюда вы можете загрузить ваше резюме</label>
 <div>
 
-        <input type="file">
-
+    <input type="file" name="file" id="file"  />
       </div>
 </fieldset>
 </div>
@@ -215,8 +252,9 @@
 
         <label>Ваш комментарий</label>
         <div>
-        <textarea></textarea>
-
+            <form:textarea path="review" name="review"></form:textarea>
+<%--        <textarea name="review"></textarea>--%>
+        </div>
 </fieldset>
 </div>
 
@@ -228,8 +266,8 @@
              Сбросить
             </button>
       </div>
-
-    </form>
+                </form:form>
+<%--    </form>--%>
 
             </div>
 
