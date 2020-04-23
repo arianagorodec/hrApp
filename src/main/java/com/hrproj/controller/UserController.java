@@ -21,6 +21,7 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,7 +47,8 @@ public class UserController {
     public String userList(Model model) {
         Candidate candidate = candidateService.getInfoCandidate();
         model.addAttribute("name", candidate.getName()+" "+candidate.getSurname());
-        model.addAttribute("birthday", candidate.getBirthday());
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        model.addAttribute("birthday", format.format(candidate.getBirthday()));
         model.addAttribute("mobphone", candidate.getMobphone());
         model.addAttribute("email", candidate.getEmail());
        model.addAttribute("gender", candidate.getGender());
@@ -58,7 +60,10 @@ public class UserController {
     public String  questUser(Model model) {
         Candidate candidate = candidateService.getInfoCandidate();
         Anketa anketa = anketaService.getByIdCandidateForForm(candidate.getId());
-        model.addAttribute("anketa", anketa);
+        if(anketa!=null)
+            model.addAttribute("anketa", anketa);
+        else
+            model.addAttribute("anketa", new Anketa());
         model.addAttribute("name", candidate.getName()+" "+candidate.getSurname());
         return "user_quest";
     }

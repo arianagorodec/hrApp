@@ -7,6 +7,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Entity
@@ -47,12 +49,6 @@ public class User implements UserDetails {
     //for registration
     @Transient
     private Person person=new Person();
-    @Transient
-    String day;
-    @Transient
-    String month;
-    @Transient
-    String year;
 
 
 
@@ -200,7 +196,9 @@ public class User implements UserDetails {
         return person.getBirthday();
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthdayS) throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+        Date birthday= format.parse(birthdayS);
         this.person.setBirthday(birthday);
     }
 

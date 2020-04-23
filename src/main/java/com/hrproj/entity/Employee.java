@@ -3,6 +3,7 @@ package com.hrproj.entity;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,6 +31,7 @@ public class Employee {
     private String patronymic;
     @Column(name = "gender")
     private String gender;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "birthday")
     private Date birthday;
     @Column(name = "pasp_ser", length = 9)

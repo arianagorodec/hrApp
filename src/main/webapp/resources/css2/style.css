@@ -315,6 +315,11 @@ padding: 0 10px;
     -ms-border-radius: 4px;
     padding: 0 20px;
 }
+.inner .form-row .form-h {
+    margin-bottom: 17px;
+
+    padding: 0 10px;
+}
 .inner .form-row  legend {
     font-size: 11px;
     font-weight: 700;
@@ -459,7 +464,7 @@ padding: 0 10px;
 	font-size: 14px;
     color: #666;
     font-weight: 600;
-    background: #fff url('../images/form-v1-icon.png') no-repeat scroll;
+    background: #fff url('../images2/form-v1-icon.png') no-repeat scroll;
     background-position: right 6px center;
     z-index: 1;
     cursor: pointer;

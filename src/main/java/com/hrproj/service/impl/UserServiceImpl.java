@@ -66,7 +66,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         if (userFromDB != null) {
             return false;
         }
-
         if(user.getIdP().equals("0")){
             user.setRole(RoleEnum.ROLE_USER);
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -77,7 +76,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             candidate.setSurname(user.getSurname());
             candidate.setMobphone(user.getMobphone());
             candidate.setGender(user.getGender());
-//            candidate.setBirthday(user.getBirthday());
+            candidate.setBirthday(user.getBirthday());
             candidate.setEmail(user.getUsername());
             candidate.setUser(user);
             candidateRepository.save(candidate);
@@ -105,8 +104,8 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                 employee.setSurname(user.getSurname());
                 employee.setMobphone(user.getMobphone());
                 employee.setGender(user.getGender());
-//            employee.setBirthday(user.getBirthday());
-              employee.setEmail(user.getUsername());
+                employee.setBirthday(user.getBirthday());
+                employee.setEmail(user.getUsername());
                 employee.setUser(user);
                 employeeRepository.save(employee);
             }

@@ -1,6 +1,7 @@
 package com.hrproj.entity;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,6 +23,7 @@ public class Candidate {
     private String surname;
     @Column(name = "name")
     private String name;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "birthday")
     private Date birthday;
     @Column(name = "mob_phone")
