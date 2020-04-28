@@ -68,16 +68,17 @@
           </div>
         </div>
 
-        <div class="templatemo-content-container">
-          <div class="templatemo-flex-row flex-content-row">
-            <div class="templatemo-content-widget white-bg col-2">
-              <i class="fa fa-times"></i>
-              <div class="square"></div>
-              <h2 class="templatemo-inline-block">Инструкция для пользвователя</h2><hr>
-              <p>Эта специальный чат с нашим HR сотрудником. Здесь вы можете задать ему интересующие вас вопросы, по поводу нашаго банка и вашей вакансии. </p>
-              <p>Для того что бы закрыть данную справку нажмите на крестик в верхнем правом углу.</p>              
-            </div>                   
-            </div>
+          <div class="templatemo-content-container">
+              <div class="templatemo-flex-row flex-content-row">
+                  <div class="templatemo-content-widget white-bg col-2">
+                      <i class="fa fa-times"></i>
+                      <div class="square"></div>
+                      <h2 class="templatemo-inline-block">Инструкция для пользвователя</h2><hr>
+                      <p>Эта специальный чат с нашим HR сотрудником. Здесь вы можете задать ему интересующие вас вопросы, по поводу нашаго банка и вашей вакансии. </p>
+                      <p>Для того что бы закрыть данную справку нажмите на крестик в верхнем правом углу.</p>
+                      <p id="connecting"></p>
+                  </div>
+              </div>
           </div>
 
           <div class="templatemo-flex-row flex-content-row">
@@ -100,55 +101,66 @@
 <div class="chat-history">
 <ul>
 
-<li class="clearfix">
-<div class="message-data align-right">
-<span class="message-data-time">10:10 AM, Сегодня</span> &nbsp; &nbsp;
-<span class="message-data-name">Вы</span> <i class="fa fa-circle me"></i>
-</div>
-<div class="message other-message float-right">
-Здравствуйте!
-</div>
-</li>
+    <c:forEach items="${list}" var = "message" >
+        <c:if test = "${message.userFrom.username != username}">
+            <li>
+                <div class="message-data">
+                    <span class="message-data-name"><i class="fa fa-circle online"></i> HR</span>
+                    <span class="message-data-time">${message.time}</span>
+                </div>
+                <div class="message my-message">
+                        ${message.message}
+                </div>
+            </li>
+        </c:if>
+        <c:if test = "${message.userFrom.username == username}">
+        <li class="clearfix">
+            <div class="message-data align-right">
+                <span class="message-data-time">${message.time}</span> &nbsp; &nbsp;
+                <span class="message-data-name">Вы</span> <i class="fa fa-circle me"></i>
+            </div>
+            <div class="message other-message float-right">
+                    ${message.message}
+            </div>
+        </li>
+        </c:if>
 
-<li>
-<div class="message-data">
-<span class="message-data-name"><i class="fa fa-circle online"></i> HR</span>
-<span class="message-data-time">10:12 AM, Сегодня</span>
-</div>
-<div class="message my-message">
-Рады Вас поприветствовать:)
-</div>
-</li>
+    </c:forEach>
 
-<li class="clearfix">
-<div class="message-data align-right">
-<span class="message-data-time">10:14 AM, Сегодня</span> &nbsp; &nbsp;
-<span class="message-data-name">ВЫ</span> <i class="fa fa-circle me"></i>
-</div>
-<div class="message other-message float-right">
-Раскажите, что-нибудь важное о баке?
-</div>
-</li>
-
-<li>
-<div class="message-data">
-<span class="message-data-name"><i class="fa fa-circle online"></i> HR</span>
-<span class="message-data-time">10:20 AM, Сегодня</span>
-</div>
-<div class="message my-message">
-Какая именно информация Вас интересует ?
-</div>
-</li>
+<%--<c:forEach items="${listTo}" var = "messageTo" >--%>
+<%--<li class="clearfix">--%>
+<%--<div class="message-data align-right">--%>
+<%--<span class="message-data-time">${messageTo.time}</span> &nbsp; &nbsp;--%>
+<%--<span class="message-data-name">Вы</span> <i class="fa fa-circle me"></i>--%>
+<%--</div>--%>
+<%--<div class="message other-message float-right">--%>
+<%--${messageTo.message}--%>
+<%--</div>--%>
+<%--</li>--%>
+<%--</c:forEach>--%>
+<%--<c:forEach items="${listFrom}" var = "messageFrom" >--%>
+<%--<li>--%>
+<%--<div class="message-data">--%>
+<%--<span class="message-data-name"><i class="fa fa-circle online"></i> HR</span>--%>
+<%--<span class="message-data-time">${messageFrom.time}</span>--%>
+<%--</div>--%>
+<%--<div class="message my-message">--%>
+<%--    ${messageFrom.message}--%>
+<%--</div>--%>
+<%--</li>--%>
+<%--</c:forEach>--%>
 
 </ul>
-</div> 
+</div>
+<%--    <form id="messageForm" name="messageForm">--%>
 <div class="chat-message clearfix">
 <textarea name="message-to-send" id="message-to-send" placeholder="Type your message" rows="3"></textarea>
 <i class="fa fa-file-o"></i> &nbsp;&nbsp;&nbsp;
 <i class="fa fa-file-image-o"></i>
 <button>Send</button>
-</div> 
-</div> 
+</div>
+<%--    </form>--%>
+</div>
 
 
 <script id="message-template" type="text/x-handlebars-template">
@@ -177,19 +189,19 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.0/handlebars.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js'></script>
-<script id="rendered-js">
-(function () {
+                <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 
+<script id="rendered-js">
+
+(function () {
+    var stompClient;
   var chat = {
     messageToSend: '',
-    messageResponses: [
-    'Интересный вопрос',
-    'Может что-нибудь ещё спросите ?',
-    'Почему имеено наш банк ?"',
-    'Нет',
-    'Затрудняюсь ответить'],
+    messageResponses: '',
 
     init: function () {
+        this.connect();
       this.cacheDOM();
       this.bindEvents();
       this.render();
@@ -199,6 +211,7 @@
       this.$button = $('button');
       this.$textarea = $('#message-to-send');
       this.$chatHistoryList = this.$chatHistory.find('ul');
+      this.$connectingElement = $('#connecting');
     },
     bindEvents: function () {
       this.$button.on('click', this.addMessage.bind(this));
@@ -217,22 +230,49 @@
         this.scrollToBottom();
         this.$textarea.val('');
 
-        // responses
-        var templateResponse = Handlebars.compile($("#message-response-template").html());
-        var contextResponse = {
-          response: this.getRandomItem(this.messageResponses),
-          time: this.getCurrentTime() };
-
-
-        setTimeout(function () {
-          this.$chatHistoryList.append(templateResponse(contextResponse));
-          this.scrollToBottom();
-        }.bind(this), 1500);
-
+        this.sendMessage();
       }
 
     },
 
+      onConnected: function () {
+          // Subscribe to the Public Topic
+           stompClient.subscribe('/topic/public.{id}', onMessageReceived);
+          // Tell your username to the server
+          stompClient.send("/app/message-${code}.addUser",
+              {},
+              JSON.stringify({from: username})
+          )
+      },
+      onError: function (error) {
+          this.$connectingElement = 'Could not connect to WebSocket server. Please refresh this page to try again!';
+      },
+
+      connect: function (event) {
+        username = '${username}';
+        if(username) {
+            var socket = new SockJS('/message-${code}');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, this.onConnected, this.onError);
+        }
+        // event.preventDefault();
+    },
+
+      sendMessage:function () {
+        // var messageToSend = this.$textarea.val();
+        // var messageContent = messageInput.value.trim();
+        if(this.messageToSend && stompClient) {
+            var chatMessage = {
+                to: '${to}',
+                from: username,
+                message: this.messageToSend,
+                time: this.getCurrentTime()
+            };
+            stompClient.send("/app/message-${code}.sendMessage", {}, JSON.stringify(chatMessage));
+            // messageToSend.value = '';
+        }
+        // event.preventDefault();
+    },
     addMessage: function () {
       this.messageToSend = this.$textarea.val();
       this.render();
@@ -249,18 +289,36 @@
     getCurrentTime: function () {
       return new Date().toLocaleTimeString().
       replace(/([\d]+:[\d]{2})(:[\d]{2})(.*)/, "$1$3");
-    },
-    getRandomItem: function (arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
-    } };
+    }
+    // getRandomItem: function (arr) {
+    //   return arr[Math.floor(Math.random() * arr.length)];
+    // } };
+  };
 
 
 
   chat.init();
 
-    searchFilter.init();
+    function onMessageReceived(payload) {
+        // var message = JSON.parse(payload.body);
+        var message = JSON.parse(payload.body);
+        // responses
+        if(message.from!=='${username}'&& message.message!== null) {
+            var templateResponse = Handlebars.compile($("#message-response-template").html());
+            var contextResponse = {
+                response: message.message,
+                time: chat.getCurrentTime()
+            };
+            chat.$chatHistoryList.append(templateResponse(contextResponse));
+        }
+        return message;
+    }
+    <%--connect();--%>
+  // searchFilter.init();
 
 })();
+
+
 //# sourceURL=pen.js
     </script>
 
@@ -289,7 +347,7 @@
 
 
     <script type="text/javascript" src="${contextPath}/resources/js3/templatemo-script.js"></script>
-     <script type="text/javascript" src="${contextPath}/resources/js/message.js"></script>      <!-- Templatemo Script -->
+<%--     <script type="text/javascript" src="${contextPath}/resources/js/message.js"></script>      <!-- Templatemo Script -->--%>
 
   </body>
 </html>

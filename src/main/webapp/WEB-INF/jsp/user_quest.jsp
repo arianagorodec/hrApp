@@ -52,7 +52,7 @@
           <ul>
             <li><a href="/"><i class="fa fa-user fa-fw"></i>Профиль</a></li>
             <li><a href="#" class="active"><i class="fa fa-file-text-o fa-fw"></i>Анкета</a></li>
-            <li><a href="/user/message"><i class="fa fa-comments fa-fw"></i>Сообщения</a></li>
+            <li><a href="/message-${code}"><i class="fa fa-comments fa-fw"></i>Сообщения</a></li>
             <li><a href="/logout"><i class="fa fa-times-circle fa-fw"></i>Выход</a></li>
           </ul>  
         </nav>

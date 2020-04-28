@@ -460,23 +460,6 @@ padding: 0 10px;
 .inner .form-row .form-holder input#plan-3:checked + label {
 	background: #4fab40;
 }
-.inner .form-row .form-holder select {
-	font-size: 14px;
-    color: #666;
-    font-weight: 600;
-    background: #fff url('../images2/form-v1-icon.png') no-repeat scroll;
-    background-position: right 6px center;
-    z-index: 1;
-    cursor: pointer;
-    position: relative;
-    border:  2px solid #e5e5e5;
-    padding: 10.4px 13px;
-}
-.inner .form-row .form-holder .input-border {
-	border:  2px solid #e5e5e5;
-	padding: 11px 20px;
-    margin-top: 8px;
-}
 .inner .form-row.form-row-date .form-holder select {
     float: left;
     width: 20.6%;
