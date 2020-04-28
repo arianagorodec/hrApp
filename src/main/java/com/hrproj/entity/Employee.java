@@ -27,8 +27,6 @@ public class Employee {
     private String surname;
     @Column(name = "name")
     private String name;
-    @Column(name = "patronymic")
-    private String patronymic;
     @Column(name = "gender")
     private String gender;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -40,18 +38,18 @@ public class Employee {
     private String pasp_id;
     @Column(name = "pasp_date")
     private Date pasp_date;
-    @Column(name = "pasp_who")
-    private String pasp_who;
+    @Column(name = "pasp_num")
+    private String pasp_num;
     @Column(name = "rate")
     private double rate;
     @Column(name = "email")
     private String email;
     @Column(name = "mobphone")
     private String mobphone;
-    @Column(name = "bankAccount")
-    private String bankAccount;
     @Column(name = "isWorking")
     private int isWorking;
+    @Column(name="photo")
+    private String photo;
 
     @OneToOne(cascade = CascadeType.ALL)
     @NotFound(action = NotFoundAction.IGNORE)
@@ -67,27 +65,26 @@ public class Employee {
     private Set<Timetable> timetableSet;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade = CascadeType.ALL)
-    private Set<Allowance> allowances;
+    private Set<Certificate> certificates;
 
-    public Employee(String surname, String name, String patronymic, Date birthday, String gender, String email,String pasp_ser, String pasp_id, Date pasp_date, String pasp_who, double rate, String mobphone, String bankAccount, int isWorking, User user, OrganizationStructure post, Set<Timetable> timetableSet, Set<Allowance> allowances) {
+    public Employee(String surname, String name, Date birthday, String gender, String email,String pasp_ser, String pasp_id, Date pasp_date, String pasp_num, double rate, String mobphone, int isWorking, String photo, User user, OrganizationStructure post, Set<Timetable> timetableSet, Set<Certificate> certificates) {
         this.surname = surname;
         this.name = name;
-        this.patronymic = patronymic;
         this.birthday = birthday;
         this.email=email;
         this.gender = gender;
         this.pasp_ser = pasp_ser;
         this.pasp_id = pasp_id;
         this.pasp_date = pasp_date;
-        this.pasp_who = pasp_who;
+        this.pasp_num = pasp_num;
         this.rate = rate;
         this.mobphone = mobphone;
-        this.bankAccount = bankAccount;
         this.isWorking = isWorking;
         this.user = user;
         this.post = post;
+        this.certificates=certificates;
         this.timetableSet = timetableSet;
-        this.allowances = allowances;
+        this.photo = photo;
     }
 
     public Employee() {
@@ -97,20 +94,19 @@ public class Employee {
         this.setId(e.getId());
         this.setSurname(e.getSurname());
         this.setName(e.getName());
-        this.setPatronymic(e.getPatronymic());
         this.setBirthday(e.getBirthday());
         this.setGender(e.getGender());
         this.setEmail(e.getEmail());
         this.setPasp_ser(e.getPasp_ser());
         this.setPasp_id(e.getPasp_id());
         this.setPasp_date(e.getPasp_date());
-        this.setPasp_who(e.getPasp_who());
+        this.setPasp_num(e.getPasp_num());
         this.setRate( e.getRate());
         this.setMobphone(e.getMobphone());
-        this.setBankAccount(e.getBankAccount());
-        this.setWorking(e.getWorking());
+        this.setIsWorking(e.getIsWorking());
         this.setUser(e.getUser());
         this.setPost(e.getPost());
+        this.setPhoto(e.getPhoto());
     }
 
     public Set<Timetable> getTimetableSet() {
@@ -121,13 +117,6 @@ public class Employee {
         this.timetableSet = timetableSet;
     }
 
-    public Set<Allowance> getAllowances() {
-        return allowances;
-    }
-
-    public void setAllowances(Set<Allowance> allowances) {
-        this.allowances = allowances;
-    }
 
     public long getId() {
         return id;
@@ -151,14 +140,6 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
     }
 
     public Date getBirthday() {
@@ -201,13 +182,6 @@ public class Employee {
         this.mobphone = mobphone;
     }
 
-    public String getBankAccount() {
-        return bankAccount;
-    }
-
-    public void setBankAccount(String bankAccount) {
-        this.bankAccount = bankAccount;
-    }
 
     public User getUser() {
         return user;
@@ -225,12 +199,12 @@ public class Employee {
         this.post = post;
     }
 
-    public int getWorking() {
+    public int getIsWorking() {
         return isWorking;
     }
 
-    public void setWorking(int working) {
-        isWorking = working;
+    public void setIsWorking(int isWorking) {
+        this.isWorking = isWorking;
     }
 
     public String getPasp_ser() {
@@ -257,11 +231,27 @@ public class Employee {
         this.pasp_date = pasp_date;
     }
 
-    public String getPasp_who() {
-        return pasp_who;
+    public String getPasp_num() {
+        return pasp_num;
     }
 
-    public void setPasp_who(String pasp_who) {
-        this.pasp_who = pasp_who;
+    public void setPasp_num(String pasp_num) {
+        this.pasp_num = pasp_num;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
+    public Set<Certificate> getCertificates() {
+        return certificates;
+    }
+
+    public void setCertificates(Set<Certificate> certificates) {
+        this.certificates = certificates;
     }
 }

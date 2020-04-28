@@ -3,8 +3,11 @@ package com.hrproj.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name="timetable")
@@ -16,18 +19,20 @@ public class Timetable {
     @Column(name = "id", length = 11, nullable = false)
     private long id;
 
-//    @Column(name = "id_employee")
-//    private int id_employee;
-//    @Column(name = "id_candidate")
-//    private int id_candidate;
-    @Column(name = "time_from")
-    private Time timeFrom;
-    @Column(name = "time_to")
-    private Time timeTo;
-    @Column(name = "date")
-    private Date date;
-    @Column(name = "type_work")
-    private String typeWork;
+    @Column(name = "startTime")
+    private LocalDateTime startTime;
+    @Column(name = "startDate")
+    private Date startDate;
+    @Column(name = "endTime")
+    private LocalDateTime endTime;
+    @Column(name = "endDate")
+    private Date endDate;
+    @Column(name = "type")
+    private String type;
+    @Column(name = "color")
+    private String color;
+    @Column(name = "url")
+    private String url;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST}) //orphanRemoval=true
     @JoinColumn(name = "id_employee", nullable = false)
@@ -48,35 +53,90 @@ public class Timetable {
         this.id = id;
     }
 
-    public Time getTimeFrom() {
-        return timeFrom;
+    public String getStartTime() {
+        if(startTime!=null)
+            return DateTimeFormatter.ofPattern("HH:mm").format(startTime);
+        else
+            return "";
     }
 
-    public void setTimeFrom(Time timeFrom) {
-        this.timeFrom = timeFrom;
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
     }
 
-    public Time getTimeTo() {
-        return timeTo;
+    public String getStartDate() {
+        if(startDate!=null)
+            return new SimpleDateFormat("yyyy-MM-dd").format(startDate);
+        else
+            return "";
     }
 
-    public void setTimeTo(Time timeTo) {
-        this.timeTo = timeTo;
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
-    public Date getDate() {
-        return date;
+    public String getType() {
+        return type;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getTypeWork() {
-        return typeWork;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setTypeWork(String typeWork) {
-        this.typeWork = typeWork;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public Candidate getCandidate() {
+        return candidate;
+    }
+
+    public void setCandidate(Candidate candidate) {
+        this.candidate = candidate;
+    }
+
+    public String getEndDate() {
+        if(endDate!=null) {
+            return new SimpleDateFormat("yyyy-MM-dd").format(endDate);
+        }
+        else
+            return "";
+//        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getEndTime() {
+//        return endTime;
+        if(endTime!=null)
+            return DateTimeFormatter.ofPattern("HH:mm").format(endTime);
+        else
+            return "";
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

@@ -1,9 +1,12 @@
 package com.hrproj.service.impl;
 
+import com.hrproj.entity.Candidate;
 import com.hrproj.entity.Employee;
 import com.hrproj.repository.EmployeeRepository;
 import com.hrproj.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,10 +31,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.findById(id);
     }
 
-    @Override
-    public Employee getByBankAccount(String bankAccount) {
-        return employeeRepository.findByBankAccount(bankAccount);
-    }
 //    @Override
 //    public Employee getByFullName(String surname, String name, String patronymic) {
 //        return employeeRepository.findByFullName(surname, name, patronymic);
@@ -44,7 +43,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee getByName(String name) {
         return employeeRepository.findByName(name);
     }
-
+    @Override
+    public Employee getByEmail(String email) {
+        return employeeRepository.findByEmail(email);
+    }
     @Override
     public Employee editEmployee(Employee employee) {
         return employeeRepository.saveAndFlush(employee);
@@ -53,5 +55,19 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public List<Employee> getAll() {
         return employeeRepository.findAll();
+    }
+
+    @Override
+    public List<Employee> getAllHr() {
+        return employeeRepository.findAllHr();
+    }
+
+    public Employee getInfoEmployee() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Employee employee = getByEmail(auth.getName());
+        return employee;
+    }
+    public Employee updateEmployee(Employee employee) {
+        return employeeRepository.save(employee);
     }
 }

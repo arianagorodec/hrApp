@@ -34,6 +34,10 @@ public class Candidate {
     private String gender;
     @Column(name="photo")
     private String photo;
+    @Column(name="HrEmail")
+    private String HrEmail;
+    @Column(name="sessionCode")
+    private String sessionCode;
 
     @OneToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name="id_user", unique = true, nullable = false, updatable = false)
@@ -145,5 +149,21 @@ public class Candidate {
 
     public void setAnketa(Anketa anketa) {
         this.anketa = anketa;
+    }
+
+    public String getHrEmail() {
+        return HrEmail;
+    }
+
+    public void setHrEmail(String hrEmail) {
+        HrEmail = hrEmail;
+    }
+
+    public String getSessionCode() {
+        return sessionCode;
+    }
+
+    public void setSessionCode(String sessionCode) {
+        this.sessionCode = sessionCode;
     }
 }

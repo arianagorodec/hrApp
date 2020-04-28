@@ -24,7 +24,7 @@ public class TimetableServiceImpl implements TimetableService {
     }
 
     @Override
-    public Timetable getByIdEmployee(Long idEmployee) {
+    public List<Timetable> getByIdEmployee(Long idEmployee) {
         return timetableRepository.findByIdEmployee(idEmployee);
     }
 
@@ -36,6 +36,21 @@ public class TimetableServiceImpl implements TimetableService {
     @Override
     public Timetable editTimetable(Timetable timetable) {
         return timetableRepository.saveAndFlush(timetable);
+    }
+
+    @Override
+    public List<Timetable> getByType(String type) {
+        return timetableRepository.findByType(type);
+    }
+
+    @Override
+    public List<Timetable> getByTypeAndIdEmployee(String type, long id) {
+        return timetableRepository.findByTypeAndIdEmployee(type,id);
+    }
+
+    @Override
+    public List<Timetable> getByTypeAndIdCandidate(String type, long id) {
+        return timetableRepository.findByTypeAndIdCandidate(type,id);
     }
 
     @Override

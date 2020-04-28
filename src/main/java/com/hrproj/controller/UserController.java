@@ -2,10 +2,9 @@ package com.hrproj.controller;
 
 import com.hrproj.entity.Anketa;
 import com.hrproj.entity.Candidate;
+import com.hrproj.entity.ChatMessage;
 import com.hrproj.entity.User;
-import com.hrproj.service.impl.AnketaServiceImpl;
-import com.hrproj.service.impl.CandidateServiceImpl;
-import com.hrproj.service.impl.UserServiceImpl;
+import com.hrproj.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -22,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
@@ -33,6 +33,10 @@ public class UserController {
     private CandidateServiceImpl candidateService;
     @Autowired
     private AnketaServiceImpl anketaService;
+    @Autowired
+    private EmployeeServiceImpl employeeService;
+    @Autowired
+    private ChatMessageServiceImpl chatMessageService;
 
     @Value("${upload.path}")
     private  String uploadPath;
@@ -46,6 +50,8 @@ public class UserController {
     @GetMapping("/user")
     public String userList(Model model) {
         Candidate candidate = candidateService.getInfoCandidate();
+        String code = candidate.getSessionCode();
+        model.addAttribute("code",code);
         model.addAttribute("name", candidate.getName()+" "+candidate.getSurname());
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         model.addAttribute("birthday", format.format(candidate.getBirthday()));
@@ -59,6 +65,8 @@ public class UserController {
     @GetMapping("/user/quest")
     public String  questUser(Model model) {
         Candidate candidate = candidateService.getInfoCandidate();
+        String code = candidate.getSessionCode();
+        model.addAttribute("code",code);
         Anketa anketa = anketaService.getByIdCandidateForForm(candidate.getId());
         if(anketa!=null)
             model.addAttribute("anketa", anketa);
@@ -67,8 +75,24 @@ public class UserController {
         model.addAttribute("name", candidate.getName()+" "+candidate.getSurname());
         return "user_quest";
     }
-    @GetMapping("/user/message")
-    public String  messageUser(Model model) {
+    @GetMapping("/message-{code}")
+    public String  messageUser(Model model, @PathVariable String code) {
+        Candidate candidate = candidateService.getInfoCandidate();
+        model.addAttribute("code",code);
+        model.addAttribute("username", candidate.getUser().getUsername());
+        model.addAttribute("to",  candidate.getHrEmail());
+//      Employee employeeTo = employeeService.getByEmail(candidate.getHrEmail());
+        Candidate candidateTo = candidateService.getByEmail(candidate.getHrEmail());
+        List<ChatMessage> messagesList = chatMessageService.getByToTwice(candidateTo.getUser().getId(), candidate.getUser().getId());
+//        List<ChatMessage> messagesList = chatMessageService.getByToTwice(employeeTo.getUser().getId(), candidate.getUser().getId());
+        Comparator<ChatMessage> comparator = new Comparator<ChatMessage>() {
+            @Override
+            public int compare(ChatMessage left, ChatMessage right) {
+                return (int) (left.getId() - right.getId());
+            }
+        };
+        messagesList.sort(comparator);
+        model.addAttribute("list",  messagesList);
         return "user_message";
     }
 

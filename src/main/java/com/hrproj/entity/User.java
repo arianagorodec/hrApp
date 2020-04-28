@@ -13,7 +13,6 @@ import java.util.*;
 
 @Entity
 @Table(name="user")
-
 public class User implements UserDetails {
     @Id
     @GeneratedValue(generator = "native")
@@ -35,6 +34,12 @@ public class User implements UserDetails {
     private String password;
     @Column(name="activation_code")
     private String activationCode;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userFrom", cascade = CascadeType.ALL)
+    private Set<ChatMessage> chatMessagesFrom;
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "userTo", cascade = CascadeType.ALL)
+    private Set<ChatMessage> chatMessagesTo;
 
 //    @Column(name="access")
 //    @Enumerated(EnumType.STRING)
@@ -225,5 +230,45 @@ public class User implements UserDetails {
 
     public void setActivationCode(String activationCode) {
         this.activationCode = activationCode;
+    }
+
+    public long getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(long id_user) {
+        this.id_user = id_user;
+    }
+
+    public Set<ChatMessage> getChatMessagesFrom() {
+        return chatMessagesFrom;
+    }
+
+    public void setChatMessagesFrom(Set<ChatMessage> chatMessagesFrom) {
+        this.chatMessagesFrom = chatMessagesFrom;
+    }
+
+    public void addChatMessagesFrom(ChatMessage chatMessageFrom) {
+        this.chatMessagesFrom.add(chatMessageFrom);
+    }
+
+    public void addChatMessagesTo(ChatMessage chatMessageTo) {
+        this.chatMessagesTo.add(chatMessageTo);
+    }
+
+    public Set<ChatMessage> getChatMessagesTo() {
+        return chatMessagesTo;
+    }
+
+    public void setChatMessagesTo(Set<ChatMessage> chatMessagesTo) {
+        this.chatMessagesTo = chatMessagesTo;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

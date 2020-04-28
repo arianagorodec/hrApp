@@ -19,6 +19,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserDetailsService, UserService {
@@ -71,6 +73,8 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             //userRepository.save(user);
 
+            List<Employee> HrList = employeeService.getAllHr();
+            Random rand = new Random();
             Candidate candidate = new Candidate();
             candidate.setName(user.getName());
             candidate.setSurname(user.getSurname());
@@ -79,6 +83,8 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             candidate.setBirthday(user.getBirthday());
             candidate.setEmail(user.getUsername());
             candidate.setUser(user);
+            candidate.setHrEmail(HrList.get(rand.nextInt(HrList.size())).getEmail());
+            candidate.setSessionCode(UUID.randomUUID().toString());
             candidateRepository.save(candidate);
         }
         else {

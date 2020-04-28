@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 //    @Query("select e from Employee e where e.surname = :surname, e.name = :name, e.patronymic = :patronymic")
@@ -14,9 +16,10 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     Employee findBySurname(@Param("surname") String surname);
     @Query("select e from Employee e where e.name = :name")
     Employee findByName(@Param("name") String name);
-    @Query("select e from Employee e where e.bankAccount = :bankAccount")
-    Employee findByBankAccount(@Param("bankAccount") String bankAccount);
-//    @Query("select e from Employee e where e.pasp_id = :idP")
-//    Employee findByPassportId(@Param("pasp_id") String idP);
 
+    @Query("select e from Employee e where e.email = :email")
+    Employee findByEmail(@Param("email") String email);
+
+    @Query("select e from Employee e where e.post.post = 'hr'")
+    List<Employee> findAllHr();
 }
