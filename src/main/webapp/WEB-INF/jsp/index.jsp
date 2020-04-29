@@ -38,8 +38,8 @@
 <sec:authorize access="hasRole('ROLE_WORKER')">
 	<% response.sendRedirect("/worker"); %>
 </sec:authorize>
-<sec:authorize access="hasRole('ROLE_ACCOUNTANT')">
-	<% response.sendRedirect("/accountant"); %>
+<sec:authorize access="hasRole('ROLE_HR')">
+	<% response.sendRedirect("/hr"); %>
 </sec:authorize>
 	<div class="limiter">
 		<div class="container-login100">

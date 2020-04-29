@@ -1,3 +1,7 @@
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +21,7 @@
 	<div class="page-content">
 		<div class="form-v1-content">
 			<div class="wizard-form">
-		        <form class="form-register" action="#" method="post">
+		        <form class="form-register" method="post">
 		        	<div id="form-total">
 		        		<!-- SECTION 1 -->
 			            <h2>
@@ -35,18 +39,18 @@
 									<div class="form-holder form-holder-2">
 										<fieldset>
 <legend>Отдел</legend>
-											<select>
+											<select name="department">
   <option label="Отдел" value="1" selected>Отдел</option>
-  <option>Управление розничного бизнеса</option>
-  <option >Управление корпоративного бизнеса</option>
-  <option>Управление безопасности и контроля</option>
-   <option>Управление межбанковских коммуникаций</option>
-  <option >Бухгалтерия</option>
-  <option>Управление операций на фондовом рынке</option>
-   <option>Юридическое управление</option>
-  <option >Управление развития</option>
-  <option>Пиар (PR) и реклама</option>
-   <option>Управление информационных технологий</option>
+  <option value="Управление розничного бизнеса">Управление розничного бизнеса</option>
+  <option value="Управление корпоративного бизнеса">Управление корпоративного бизнеса</option>
+  <option value="Управление безопасности и контроля">Управление безопасности и контроля</option>
+   <option value="Управление межбанковских коммуникаций">Управление межбанковских коммуникаций</option>
+  <option value="Бухгалтерия">Бухгалтерия</option>
+  <option value="Управление операций на фондовом рынке">Управление операций на фондовом рынке</option>
+   <option value="Юридическое управление">Юридическое управление</option>
+  <option value="Управление развития">Управление развития</option>
+  <option value="Пиар (PR) и реклама">Пиар (PR) и реклама</option>
+   <option value="Управление информационных технологий">Управление информационных технологий</option>
 </select>
 
 										
@@ -61,7 +65,16 @@
 									<div class="form-holder form-holder-2">
 										<fieldset>
 											<legend>Должность</legend>
-											<input type="text" class="form-control" id="last-name" name="last-name" placeholder="Должность" required>
+											<input type="text" class="form-control" id="post" name="post" placeholder="Должность" required>
+										</fieldset>
+									</div>
+								</div>
+
+								<div class="form-row">
+									<div class="form-holder form-holder-2">
+										<fieldset>
+											<legend>Ставка</legend>
+											<input type="number" class="form-control" id="rate" name="rate" placeholder="Ставка" required>
 										</fieldset>
 									</div>
 								</div>
@@ -70,7 +83,7 @@
 									<div class="form-holder form-holder-2">
 										<fieldset>
 											<legend>Дата выдачи паспорта</legend>
-											<input type="text" name="your_email" id="your_email" class="form-control" pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" placeholder="dd/mm/yyyy" required>
+											<input type="text" name="datePasp" id="your_email" class="form-control" pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" placeholder="dd/mm/yyyy" required>
 										</fieldset>
 									</div>
 								</div>
@@ -128,15 +141,14 @@
                     <input type="checkbox" value="">
                     <label>*  Я принимаю <a href="#"> Условия использования</a></label>
                 </p>
-                
+										<button type="submit" >Сохранить</button>
             </fieldset>
             			                	</div>
 							</div>
 			            </section>
 			            </div>
+				</form>
 		        	</div>
-
-		        </form>
 			</div>
 		</div>
 	</div>

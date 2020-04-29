@@ -106,8 +106,8 @@
                 <div class="table-responsive">
                     <div class="pricingTable">
   <ul class="pricingTable-firstTable">
-      <form method="post">
     <li class="pricingTable-firstTable_table">
+        <form method="post">
       <h1 id = "typeCertificate" class="pricingTable-firstTable_table__header">Справка по месту работы</h1>
       <p class="pricingTable-firstTable_table__pricing"><span>ожидание</span><span>1-2</span><span>недели</span></p>
       <ul class="pricingTable-firstTable_table__options">

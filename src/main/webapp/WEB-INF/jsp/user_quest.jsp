@@ -153,7 +153,7 @@
 <fieldset>
    <legend><p class="step-icon"><span>05</span></p></legend>
       <div>
-        <label>Наскольеко хорошо вы осваиваете новые программные продукты ?</label>
+        <label>Насколько хорошо вы осваиваете новые программные продукты ?</label>
         <div>
             <form:radiobutton path="question5"  name="program" value="Несколько часов"/>Несколько часов<br>
                 <form:radiobutton path="question5"  name="program" value="Несколько дней"/>Несколько дней<br>

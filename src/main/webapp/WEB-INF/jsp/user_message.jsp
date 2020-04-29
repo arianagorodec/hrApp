@@ -100,7 +100,7 @@
 </div> 
 <div class="chat-history">
 <ul>
-
+<c:if test = "${list != null}">
     <c:forEach items="${list}" var = "message" >
         <c:if test = "${message.userFrom.username != username}">
             <li>
@@ -126,7 +126,7 @@
         </c:if>
 
     </c:forEach>
-
+</c:if>
 <%--<c:forEach items="${listTo}" var = "messageTo" >--%>
 <%--<li class="clearfix">--%>
 <%--<div class="message-data align-right">--%>
