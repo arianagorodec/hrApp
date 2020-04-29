@@ -41,6 +41,9 @@ public class User implements UserDetails {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "userTo", cascade = CascadeType.ALL)
     private Set<ChatMessage> chatMessagesTo;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<Log> logs;
+
 //    @Column(name="access")
 //    @Enumerated(EnumType.STRING)
  //   private RoleEnum access;
