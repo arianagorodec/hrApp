@@ -13,6 +13,8 @@ public interface CandidateService {
     Candidate getByName(String name);
     //Candidate getByFullName(String surname, String name, String patronymic);
     Candidate getByEmail(String email);
+    List<Candidate> getByHREmail(String email);
     Candidate editCandidate(Candidate candidate);
+    Candidate getBySessionCode(String code);
     List<Candidate> getAll();
 }

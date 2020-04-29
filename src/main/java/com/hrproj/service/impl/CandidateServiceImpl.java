@@ -27,7 +27,7 @@ public class CandidateServiceImpl implements CandidateService {
 
     @Override
     public void deleteById(long id) {
-        candidateRepository.deleteById(id);
+        candidateRepository.deleteByIdCandidate(id);
     }
 
     @Override
@@ -67,5 +67,15 @@ public class CandidateServiceImpl implements CandidateService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Candidate candidate = getByEmail(auth.getName());
         return candidate;
+    }
+
+    @Override
+    public Candidate getBySessionCode(String code) {
+        return candidateRepository.findBySessionCode(code);
+    }
+
+    @Override
+    public List<Candidate> getByHREmail(String email) {
+        return candidateRepository.findByEmailHR(email);
     }
 }

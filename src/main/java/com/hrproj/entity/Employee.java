@@ -58,7 +58,7 @@ public class Employee {
 
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST})
-    @JoinColumn(name = "id_post", nullable = false)
+    @JoinColumn(name = "id_post")
     private OrganizationStructure post;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "employee", cascade = CascadeType.ALL)

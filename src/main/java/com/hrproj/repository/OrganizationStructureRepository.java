@@ -14,4 +14,6 @@ public interface OrganizationStructureRepository extends JpaRepository<Organizat
     OrganizationStructure findByDepartment(@Param("department") String department);
     @Query("select o from OrganizationStructure o where o.post = :post")
     OrganizationStructure findByPost(@Param("post") String post);
+    @Query("select o from OrganizationStructure o where o.post = :post and o.department = :department")
+    OrganizationStructure findByDepartmentAndPost(@Param("department")String department, @Param("post")String post);
 }

@@ -17,6 +17,7 @@ public interface ChatMessageRepository extends JpaRepository<ChatMessage,Long> {
     List<ChatMessage> getByTo(@Param("to") long to);
     @Query("select a from ChatMessage a where a.userTo.id_user = :to and  a.userFrom.id_user = :from")
     List<ChatMessage> getByToAndFrom(long to, long from);
-    @Query("select a from ChatMessage a where a.userTo.id_user = :to or  a.userTo.id_user = :from")
+    @Query("select a from ChatMessage a where a.userTo.id_user = :to and a.userFrom.id_user =:from or  " +
+            "a.userTo.id_user = :from and a.userFrom.id_user = :to")
     List<ChatMessage> getByToTwice(long to, long from);
 }

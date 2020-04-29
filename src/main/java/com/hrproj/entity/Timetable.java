@@ -34,11 +34,11 @@ public class Timetable {
     @Column(name = "url")
     private String url;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST}) //orphanRemoval=true
+    @ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST}) //orphanRemoval=true
     @JoinColumn(name = "id_employee", nullable = false)
     private Employee employee;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_candidate", nullable = true)
     private Candidate candidate;
 

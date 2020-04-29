@@ -12,4 +12,5 @@ public interface OrganizationStructureService {
     OrganizationStructure getByPost(String name);
     OrganizationStructure editOrganizationStructure(OrganizationStructure organizationStructure);
     List<OrganizationStructure> getAll();
+    OrganizationStructure getByDepartmentAndPost(String department, String post);
 }

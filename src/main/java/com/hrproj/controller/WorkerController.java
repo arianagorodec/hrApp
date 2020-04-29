@@ -25,6 +25,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 @Controller
@@ -137,7 +138,7 @@ public class WorkerController {
     }
 
     @PostMapping("/worker/certificate")
-    public String addCertificate(@RequestParam("typeCertificate") String type, @RequestParam("numCert") String numCert ){
+    public String addCertificate(@RequestParam("typeCertificate") String type){ //@RequestParam("numCert") String numCert
         if(type!=null) {
             Employee employee = employeeService.getInfoEmployee();
             Certificate certificate = new Certificate();
@@ -147,10 +148,43 @@ public class WorkerController {
             certificate.setEmployee(employee);
             certificateService.addCertificate(certificate);
         }
-        else if(numCert!=null){
-
-        }
+//        else if(numCert!=null){
+//
+//        }
         return "redirect:/worker/certificate";
     }
 
+    @PostMapping("/worker/event")
+    public String setEvent(@RequestParam("dateStart") String dateStart,
+                           @RequestParam("timeStart") String timeStart,
+                           @RequestParam("dateEnd") String dateEnd,
+                           @RequestParam("timeEnd") String timeEnd,
+                           @RequestParam("type") String type) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Employee employee = employeeService.getByEmail(auth.getName());
+        Timetable timetable = new Timetable();
+        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+        String[] colors = {"#FFDEAD","#ADD8E6","#4fab40", "#DDA0DD"};
+        Random random = new Random();
+        try {
+            String start = dateStart+" "+timeStart;
+            String end = dateEnd+" "+timeEnd;
+            Date dateS= format.parse(start);
+            LocalDateTime timeS = LocalDateTime.parse(start, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+            Date dateE= format.parse(end);
+            LocalDateTime timeE = LocalDateTime.parse(end, DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+            timetable.setStartDate(dateS);
+            timetable.setStartTime(timeS);
+            timetable.setEndDate(dateE);
+            timetable.setEndTime(timeE);
+            timetable.setEmployee(employee);
+            timetable.setType(type);
+            timetable.setColor(colors[random.nextInt(colors.length)]);
+            timetableService.addTimetable(timetable);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "redirect:/worker/event";
+    }
 }

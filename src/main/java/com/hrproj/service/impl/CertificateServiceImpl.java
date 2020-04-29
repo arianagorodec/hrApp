@@ -32,6 +32,11 @@ public class CertificateServiceImpl implements CertificateService {
     }
 
     @Override
+    public Certificate getById(Long id) {
+        return certificateRepository.getById(id);
+    }
+
+    @Override
     public Certificate editCertificate(Certificate certificate) {
         return certificateRepository.saveAndFlush(certificate);
     }

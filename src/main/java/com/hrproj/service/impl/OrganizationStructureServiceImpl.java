@@ -33,6 +33,12 @@ public class OrganizationStructureServiceImpl implements OrganizationStructureSe
     public OrganizationStructure getByDepartment(String name) {
         return organizationStructureRepository.findByDepartment(name);
     }
+
+    @Override
+    public OrganizationStructure getByDepartmentAndPost(String department, String post) {
+        return organizationStructureRepository.findByDepartmentAndPost(department,post);
+    }
+
     @Override
     public OrganizationStructure getByPost(String name) {
         return organizationStructureRepository.findByPost(name);

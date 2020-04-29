@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             }
             if (!post.equals("")) {
                 if (post.equals("HR")) {
-                    user.setRole(RoleEnum.ROLE_ACCOUNTANT);
+                    user.setRole(RoleEnum.ROLE_HR);
                 } else {
                     user.setRole(RoleEnum.ROLE_WORKER);
                 }
@@ -162,7 +162,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             return false;
 
 //        user.setActivationCode(null);
-        userRepository.save(user);
+//        userRepository.save(user);
 
         return true;
     }
@@ -173,6 +173,17 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         user.setPassword(bCryptPasswordEncoder.encode(password));
         user.setActivationCode(null);
         userRepository.save(user);
+    }
+
+    public void saveRegistrUser(String code) {
+
+        User user = userRepository.findByActivationCode(code);
+        user.setActivationCode(null);
+        userRepository.save(user);
+    }
+
+    public User getByActivationCode(String code){
+        return userRepository.findByActivationCode(code);
     }
 
     //    @Override

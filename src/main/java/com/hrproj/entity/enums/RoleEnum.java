@@ -6,7 +6,7 @@ public enum RoleEnum implements GrantedAuthority {
     ROLE_USER,
     ROLE_ADMIN,
     ROLE_WORKER,
-    ROLE_ACCOUNTANT;
+    ROLE_HR;
 
     RoleEnum() {
     }

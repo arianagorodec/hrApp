@@ -1,9 +1,6 @@
 package com.hrproj.controller;
 
-import com.hrproj.entity.Anketa;
-import com.hrproj.entity.Candidate;
-import com.hrproj.entity.ChatMessage;
-import com.hrproj.entity.User;
+import com.hrproj.entity.*;
 import com.hrproj.service.impl.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -81,10 +78,9 @@ public class UserController {
         model.addAttribute("code",code);
         model.addAttribute("username", candidate.getUser().getUsername());
         model.addAttribute("to",  candidate.getHrEmail());
-//      Employee employeeTo = employeeService.getByEmail(candidate.getHrEmail());
+        Employee employeeTo = employeeService.getByEmail(candidate.getHrEmail());
         Candidate candidateTo = candidateService.getByEmail(candidate.getHrEmail());
-        List<ChatMessage> messagesList = chatMessageService.getByToTwice(candidateTo.getUser().getId(), candidate.getUser().getId());
-//        List<ChatMessage> messagesList = chatMessageService.getByToTwice(employeeTo.getUser().getId(), candidate.getUser().getId());
+        List<ChatMessage> messagesList = chatMessageService.getByToTwice(employeeTo.getUser().getId(), candidate.getUser().getId());
         Comparator<ChatMessage> comparator = new Comparator<ChatMessage>() {
             @Override
             public int compare(ChatMessage left, ChatMessage right) {

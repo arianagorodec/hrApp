@@ -45,8 +45,8 @@ public class Anketa {
     @Column(name = "review")
     private String review;
 
-    @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name="id_candidate", unique = true, nullable = false, updatable = false)
+    @OneToOne(optional = false)
+    @JoinColumn(name="id_candidate", unique = true)
     private Candidate candidate;
 
     public Anketa() {

@@ -68,4 +68,84 @@ public class AnketaServiceImpl implements AnketaService {
         }
         return anketa;
     }
+
+    public Double[] question4Percent(List<Anketa> anketaList) {
+        Double[] q = new Double[4];
+        for (int i = 0; i< q.length; i++) {
+            q[i] = 0.0;
+        }
+        for (Anketa anketa: anketaList) {
+            if(anketa.getQuestion4().equals("Отлично"))
+                q[0]++;
+            else if(anketa.getQuestion4().equals("Хорошо"))
+                q[1]++;
+            else if(anketa.getQuestion4().equals("Удовлетворительно"))
+                q[2]++;
+            else
+                q[3]++;
+
+        }
+        for (int i = 0; i< q.length; i++) {
+            q[i] = q[i] / anketaList.size() * 100;
+        }
+        return q;
+    }
+
+    public Double[] question5Percent(List<Anketa> anketaList) {
+        Double[] q = new Double[4];
+        for (int i = 0; i< q.length; i++) {
+            q[i] = 0.0;
+        }
+        for (Anketa anketa: anketaList) {
+            if(anketa.getQuestion5().equals("Несколько часов"))
+                q[0]++;
+            else if(anketa.getQuestion5().equals("Несколько дней"))
+                q[1]++;
+            else if(anketa.getQuestion5().equals("Несколько недель"))
+                q[2]++;
+            else
+                q[3]++;
+
+        }
+        for (int i = 0; i< q.length; i++) {
+            q[i] = q[i] / anketaList.size() * 100;
+        }
+        return q;
+    }
+
+    public Double[] question1Percent(List<Anketa> anketaList) {
+        Double[] q = new Double[2];
+        for (int i = 0; i< q.length; i++) {
+            q[i] = 0.0;
+        }
+        for (Anketa anketa: anketaList) {
+            if(anketa.getQuestion5().equals("Да"))
+                q[0]++;
+            else
+                q[1]++;
+        }
+        for (int i = 0; i< q.length; i++) {
+            q[i] = q[i] / anketaList.size() * 100;
+        }
+        return q;
+    }
+
+    public Double[] question2Percent(List<Anketa> anketaList) {
+        Double[] q = new Double[2];
+        for (int i = 0; i< q.length; i++) {
+            q[i] = 0.0;
+        }
+        for (Anketa anketa: anketaList) {
+            if(anketa.getQuestion5().equals("Да"))
+                q[0]++;
+            else
+                q[1]++;
+        }
+        for (int i = 0; i< q.length; i++) {
+            q[i] = q[i] / anketaList.size() * 100;
+        }
+        return q;
+    }
 }
+
+
