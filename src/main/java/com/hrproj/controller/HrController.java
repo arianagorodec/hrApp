@@ -47,6 +47,8 @@ public class HrController {
     private AnketaServiceImpl anketaService;
     @Autowired
     private MailSenderServiceIml mailSender;
+    @Autowired
+    LogServiceImpl logService;
 
     @Value("${upload.path}")
     private  String uploadPath;
@@ -78,6 +80,13 @@ public class HrController {
         model.addAttribute("name", employee.getSurname()+" "+employee.getName());
         String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         model.addAttribute("date", date);
+
+        Log log = new Log();
+        log.setInfo("Вошёл");
+        log.setUser(userService.getByUsername(auth.getName()));
+        log.setTime(new Date());
+        logService.addLog(log);
+
         return "hr_certificate";
     }
     @GetMapping("/hr/interviewer")

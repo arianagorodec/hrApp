@@ -42,6 +42,8 @@ public class WorkerController {
     private TimetableServiceImpl timetableService;
     @Autowired
     private CertificateServiceImpl certificateService;
+    @Autowired
+    private LogServiceImpl logService;
 
     @Value("${upload.path}")
     private  String uploadPath;
@@ -51,6 +53,7 @@ public class WorkerController {
 
     @GetMapping("/worker")
     public String workerList(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Employee employee = employeeService.getInfoEmployee();
         model.addAttribute("name", employee.getName()+" "+employee.getSurname());
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -62,6 +65,11 @@ public class WorkerController {
         model.addAttribute("post", employee.getPost().getPost());
         model.addAttribute("uploadPath",uploadPath);
        model.addAttribute("photo",employee.getPhoto());
+        Log log = new Log();
+        log.setInfo("Вошёл");
+        log.setUser(userService.getByUsername(auth.getName()));
+        log.setTime(new Date());
+        logService.addLog(log);
         return "employee";
     }
     @GetMapping("/worker/certificate")
@@ -85,22 +93,7 @@ public class WorkerController {
     public String  eventEmployee(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Employee employee = employeeService.getByEmail(auth.getName());
-//        Candidate candidate = candidateService.getByEmail("arianagorodec@gmail.com");
-//        Timetable timetable = new Timetable();
-//        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-//
-//        try {
-//            Date date= format.parse("03/04/2020 12:00");
-//            LocalDateTime time = LocalDateTime.parse("03/04/2020 12:00",DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
-//            timetable.setDate(date);
-//            timetable.setTime(time);
-//            timetable.setCandidate(candidate);
-//            timetable.setEmployee(employee);
-//            timetable.setType("resume");
-//            timetableService.addTimetable(timetable);
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
+
         List<Timetable> timetables = timetableService.getByTypeAndIdEmployee("resume",employee.getId());
         model.addAttribute("resumeForm", timetables);
         List<Timetable> events = timetableService.getByIdEmployee(employee.getId());

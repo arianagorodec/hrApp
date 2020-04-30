@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,6 +35,8 @@ public class UserController {
     private EmployeeServiceImpl employeeService;
     @Autowired
     private ChatMessageServiceImpl chatMessageService;
+    @Autowired
+    LogServiceImpl logService;
 
     @Value("${upload.path}")
     private  String uploadPath;
@@ -57,6 +60,12 @@ public class UserController {
        model.addAttribute("gender", candidate.getGender());
         model.addAttribute("uploadPath",uploadPath);
        model.addAttribute("photo",candidate.getPhoto());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Log log = new Log();
+        log.setInfo("Вошёл");
+        log.setUser(userService.getByUsername(auth.getName()));
+        log.setTime(new Date());
+        logService.addLog(log);
         return "user";
     }
     @GetMapping("/user/quest")

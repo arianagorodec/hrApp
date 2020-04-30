@@ -1,5 +1,6 @@
 package com.hrproj.config;
 
+import com.hrproj.entity.Log;
 import com.hrproj.service.UserService;
 import com.hrproj.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

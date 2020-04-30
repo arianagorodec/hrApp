@@ -58,8 +58,8 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    public List<Log> findByTime(LocalDateTime time) {
-        return logRepository.findByTime(time);
+    public List<Log> getByInfo(String info) {
+        return logRepository.findByInfo(info);
     }
 }
 

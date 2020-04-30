@@ -1,5 +1,7 @@
 package com.hrproj.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,6 +11,7 @@ public class Person {
     private String surname;
     private String name;
     private String patronymic;
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date birthday;
     private String mobphone;
     private String email;

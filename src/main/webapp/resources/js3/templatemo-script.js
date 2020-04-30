@@ -19,7 +19,46 @@ $(document).ready(function(){
 	});
 });
 
+ window.onload = function () {
+ CanvasJS.addColorSet("greenShades",
+                [//colorSet Array
 
+                "#4fab40"
+                             
+                ]);
+
+var options = {
+  exportEnabled: true,
+  animationEnabled: true,
+  colorSet: "greenShades",
+  title: {
+    
+  },
+  data: [
+  {
+    type: "splineArea",
+    dataPoints: [
+      { y: 680 },
+      { y: 920 },
+      { y: 1100 },
+      { y: 870 },
+      { y: 1000 },
+      { y: 1213 },
+      { y: 1300 },
+      { y: 1284 },
+      { y: 998 },
+      { y: 1370 },
+      { y: 1100 },
+      { y: 970 },
+      { y: 1000 }
+
+    ]
+  }
+  ]
+};
+$("#chartContainer").CanvasJSChart(options);
+
+}
 
 
 

@@ -23,10 +23,47 @@ public class Log {
     @Column(name="info")
     private String info;
 
-    @Column(name="date")
-    private Date date;
-
     @Column(name="time")
-    private LocalDateTime time;
+    private Date time;
 
+    public Log() {
+    }
+
+    public Log(User user, String info, Date time) {
+        this.user = user;
+        this.info = info;
+        this.time = time;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
+
+    public Date getTime() {
+        return time;
+    }
 }

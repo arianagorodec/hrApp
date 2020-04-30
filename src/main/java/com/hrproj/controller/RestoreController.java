@@ -1,15 +1,21 @@
 package com.hrproj.controller;
 
+import com.hrproj.entity.Log;
 import com.hrproj.entity.User;
+import com.hrproj.service.LogService;
+import com.hrproj.service.impl.LogServiceImpl;
 import com.hrproj.service.impl.MailSenderServiceIml;
 import com.hrproj.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.UUID;
 
 @Controller
@@ -18,6 +24,8 @@ public class RestoreController {
     private UserServiceImpl userService;
     @Autowired
     private MailSenderServiceIml mailSender;
+    @Autowired
+    private LogServiceImpl logService;
 
     @GetMapping("/restore")
     public String restorePass(Model model) {
@@ -50,6 +58,11 @@ public class RestoreController {
     public String restore(Model model, @PathVariable String code){
         boolean isActivated = userService.activatedUser(code);
         if(isActivated) {
+            Log log = new Log();
+            log.setInfo("Попытка восстаовления пароля");
+            log.setUser(userService.getByActivationCode(code));
+            log.setTime(new Date());
+            logService.addLog(log);
             return "activation";
         }
         else

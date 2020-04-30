@@ -54,7 +54,7 @@
             <li><a href="/hr/staffing_table"><i class="fa fa-th-list"></i>Штатное расписание </a></li>
             <li><a href="/hr/report"><i class="fa fa-database fa-fw"></i>Отчёт по ЗП</a></li>
             <li><a href="/hr/certificate" ><i class="fa fa-file-text-o fa-fw"></i>Заказ справок</a></li>
-            <li><a href="/loogout"><i class="fa fa-times-circle fa-fw"></i>Выход</a></li>
+            <li><a href="/logout"><i class="fa fa-times-circle fa-fw"></i>Выход</a></li>
           </ul>  
         </nav>
       </div>

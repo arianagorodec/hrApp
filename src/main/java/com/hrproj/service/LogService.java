@@ -12,9 +12,9 @@ public interface LogService {
     Log addLog(Log log);
     void deleteById(long id);
     Log getByIdUser(Long id);
+    List<Log> getByInfo(String info);
     Log getByEmailUser(String email);
     List<Log> getAll();
     List<Log> findByDate(Date date);
     Log editLog(Log log);
-    List<Log> findByTime(LocalDateTime time);
 }

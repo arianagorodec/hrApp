@@ -17,8 +17,8 @@ public interface LogRepository extends JpaRepository<Log,Long> {
     Log findByIdUser(@Param("id") Long id);
     @Query("select a from Log a where a.user.username = :email")
     Log findByEmailUser(@Param("email") String email);
-    @Query("select a from Log a where a.date = :date")
+    @Query("select a from Log a where a.time = :date")
     List<Log> findByDate(@Param("date") Date date);
-    @Query("select a from Log a where a.time = :time")
-    List<Log> findByTime(@Param("time") LocalDateTime time);
+    @Query("select a from Log a where a.info = :info")
+    List<Log> findByInfo(@Param("info") String info);
 }
