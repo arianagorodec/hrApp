@@ -280,7 +280,7 @@ background: #E9E8E8;
 	padding: 15px;
 	
 }
-.panel-default>.panel-heading h2 {color: white };
+.panel-default>.panel-heading h2 {color: white }
 .panel-default .fa-times {
 	top: 12px;
 	background-color: #67B5B9;
@@ -506,7 +506,7 @@ input[type="radio"]:checked + label span {
 .templatemo-social-icon:hover {	background-color: #39ADB4; }
 .templatemo-content-img-bg {
 	background-position: center;
-	background-attachment: stretch;
+	/*background-attachment: stretch;*/
 	min-height: 300px;
 }
 .content-bg-img {
@@ -1335,7 +1335,6 @@ form.form2.label {
     height: auto;
 	background-color: #4fab40;
     background-repeat: repeat-x;
-    background-image: -khtml-gradient(linear, left top, left bottom, from(#8db7dd), to(#3d6182));
     background-image: -moz-linear-gradient(top, #8db7dd, #3d6182);
     background-image: -ms-linear-gradient(top, #8db7dd, #3d6182);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #8db7dd), color-stop(100%, #3d6182));
@@ -1364,7 +1363,6 @@ form.form2.label {
 .form2.button[type=reset] {
 	background-color: #4fab40;
     background-repeat: repeat-x;
-    background-image: -khtml-gradient(linear, left top, left bottom, from(#646464), to(#292929));
     background-image: -moz-linear-gradient(top, #646464, #292929);
     background-image: -ms-linear-gradient(top, #646464, #292929);
     background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #646464), color-stop(100%, #292929));
@@ -1715,6 +1713,26 @@ height: 885px;
         
       }
     }
+
+.slider2 {
+	position: relative;
+	overflow: hidden;
+	width: 1400px;
+}
+
+.slider__wrapper2 {
+	display: flex;
+	transition: transform 0.6s ease;
+}
+
+
+
+@media (min-width: 600px) {
+	.slider__item2 {
+		flex: 0 0 45%;
+
+	}
+}
 
     .slider__control {
       position: absolute;
