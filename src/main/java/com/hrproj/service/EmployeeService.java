@@ -8,10 +8,9 @@ import java.util.Optional;
 public interface EmployeeService {
     Employee addEmployee(Employee employee);
     void deleteById(long id);
-    Optional<Employee> getById(Long id);
     Employee getBySurname(String surname);
     Employee getByEmail(String email);
-    //Employee getByFullName(String surname, String name, String patronymic);
+    Employee getByIdE(long id);
     Employee getByName(String name);
     Employee editEmployee(Employee employee);
     List<Employee> getAll();

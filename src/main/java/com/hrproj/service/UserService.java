@@ -2,6 +2,8 @@ package com.hrproj.service;
 
 import com.hrproj.entity.User;
 
+import java.util.List;
+
 
 public interface UserService {
         User addUser(User user);
@@ -13,6 +15,8 @@ public interface UserService {
         User getByUsername(String username);
 
         User editUser(User user);
+
+        List<User> getAdmin();
 
         //List<User> getAll();
 }

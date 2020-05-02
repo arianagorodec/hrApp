@@ -95,7 +95,7 @@
                           <div class="slider__item">
                               <div class="banner_content">
                                 <div class="media" style=" width:1400px;">
-                                    <c:if test="${not empty photo}">
+                                    <c:if test="${not empty employee.photo}">
                                         <div class="d-flex">
                                             <img src="/photoUser/${employee.photo}" width="668" height="690" alt="profile">
                                         </div>
@@ -108,7 +108,7 @@
                                         <ul class="list basic_info">
                                             <li><a href="#"><i class="fa fa-calendar-o"></i>  <fmt:formatDate value="${employee.birthday}" pattern="dd/MM/yyyy"/></a></li>
                                             <li><a href="#"><i class="fa fa-phone"></i> ${employee.mobphone}</a></li>
-                                            <li><a href="#"><i class="fa  fa-envelope"></i><input type="text" name="email"  maxlength="255" style="outline: none; border: none; width:600px; background: #ffffff;" value="${employee.email}" readonly></a></li>
+                                            <li><a href="#"><i class="fa  fa-envelope"></i><input type="text" name="email"  maxlength="255" style="outline: none; border: none; width:400px; background: #ffffff;" value="${employee.email}" readonly></a></li>
                                             <li><a href="#"><i class="fa  fa-transgender"></i> ${employee.gender}</a></li>
                                             <li><a href="#"><i class="fa   fa-suitcase"></i>${employee.post.department}</a></li>
                                             <li><a href="#"><i class="fa   fa-list-alt"></i>${employee.post.post}</a></li>
@@ -120,23 +120,17 @@
                                       </ul>
 
                                         <c:if test="${employee.isWorking==1}">
-                    <div>
-                        <button id="submit-end" class="login100-form-btn" style="
+                                            <div>
+                                                <button id="submit-end" class="login100-form-btn" style="
                         margin-top: 30px;
                     ">Уволить</button></td>
-<%--                    <input type="button" value="Уволить"class="login100-form-btn" style="--%>
-<%--                        margin-top: 30px;--%>
-<%--                    "/>--%>
-                    </div>
+                                            </div>
                                         </c:if>
                                         <c:if test="${employee.isWorking==0}">
                                         <div>
                                             <button id="submit-get" class="login100-form-btn" style="
                         margin-top: 30px;
                     ">Принять</button></td>
-<%--                                            <input type="button" value="Принять"class="login100-form-btn" style="--%>
-<%--                        margin-top: 30px;--%>
-<%--                    "/>--%>
                                         </div>
                                         </c:if>
                                     </div>
@@ -146,84 +140,73 @@
                           </div>
               </form>
                       </c:forEach>
+                      </div>
+                      <a class="slider__control slider__control_left" href="#" role="button"></a>
+                      <a class="slider__control slider__control_right" href="#" role="button"></a>
                   </div>
-    <a class="slider__control slider__control_left" href="#" role="button"></a>
-    <a class="slider__control slider__control_right" href="#" role="button"></a>
-  </div>
-
-    
-
-       </div>                
+                </div>
               </div>
             </div>
-          
-                </div>
+          </div>
+            <div class="templatemo-flex-row flex-content-row">
+                <div class="col-1">
+                    <div class="panel panel-default margin-10">
+                        <div class="panel-heading"><h2>Досье соискателей</h2></div>
+                        <div class="panel-body">
+                            <div class="slider">
+                                <div class="slider__wrapper">
+                                    <c:forEach items="${candidateForm}" var = "candidate" >
+                                      <form method="post" action="/hr/profile/candidate">
+                                          <div class="slider__item">
+                                              <div class="banner_content">
+                                                <div class="media" style=" width:1400px;">
+                                                    <c:if test="${not empty candidate.photo}">
+                                                        <div class="d-flex">
+                                                            <img src="/photoUser/${candidate.photo}" width="668" height="690" alt="profile">
+                                                        </div>
+                                                    </c:if>
+                                                  <div class="media-body">
+                                                    <div class="personal_text" style="
+                                        padding-top: 100px;">
+                                                        <h3>${candidate.name} ${candidate.surname}</h3>
+                                                      <h4>Соискатель</h4>
+                                                        <ul class="list basic_info">
+                                                            <li><a href="#"><i class="fa fa-calendar-o"></i>  <fmt:formatDate value="${candidate.birthday}" pattern="dd/MM/yyyy"/></a></li>
+                                                            <li><a href="#"><i class="fa fa-phone"></i> ${candidate.mobphone}</a></li>
+                                                            <li><a href="#"><i class="fa  fa-envelope"></i> <input type="text" name="email" maxlength="240" style="outline: none; width: 400px; border: none; background: #ffffff;" value="${candidate.email}" readonly> </a></li>
+                                                            <li><a href="#"><i class="fa  fa-transgender"></i> ${candidate.gender}</a></li>
+                                                        </ul>
 
-                          <div class="templatemo-flex-row flex-content-row">
+                                                      <ul class="list personal_social">
+                                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                                      </ul>
+                                                        <div>
+                                                            <button id="submit-candidate" class="login100-form-btn" style="
+                                    margin-top: 30px;
+                                ">Принять на работу</button></td>
 
-            <div class="col-1">              
-              <div class="panel panel-default margin-10">
-                <div class="panel-heading"><h2>Досье соискателей</h2></div>
-                <div class="panel-body">
-                  <div class="slider">
-                      <div class="slider__wrapper">
-                      <c:forEach items="${candidateForm}" var = "candidate" >
-                          <form method="post" action="/hr/profile/candidate">
-                              <div class="slider__item">
-                                  <div class="banner_content">
-                                    <div class="media" style=" width:1400px;">
-                                        <c:if test="${not empty candidate.photo}">
-                                            <div class="d-flex">
-                                                <img src="/photoUser/${candidate.photo}" width="668" height="690" alt="profile">
+                                                        </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
                                             </div>
-                                        </c:if>
-                                      <div class="media-body">
-                                        <div class="personal_text" style="
-                            padding-top: 100px;">
-                                            <h3>${candidate.name} ${candidate.surname}</h3>
-                                          <h4>Соискатель</h4>
-                                            <ul class="list basic_info">
-                                                <li><a href="#"><i class="fa fa-calendar-o"></i>  <fmt:formatDate value="${candidate.birthday}" pattern="dd/MM/yyyy"/></a></li>
-                                                <li><a href="#"><i class="fa fa-phone"></i> ${candidate.mobphone}</a></li>
-                                                <li><a href="#"><i class="fa  fa-envelope"></i> <input type="text" name="email" maxlength="255" style="outline: none; width: 600px; border: none; background: #ffffff;" value="${candidate.email}" readonly> </a></li>
-                                                <li><a href="#"><i class="fa  fa-transgender"></i> ${candidate.gender}</a></li>
-                                            </ul>
-
-                                          <ul class="list personal_social">
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                          </ul>
-                                            <div>
-                                                <button id="submit-candidate" class="login100-form-btn" style="
-                        margin-top: 30px;
-                    ">Принять на работу</button></td>
-<%--                                                <input type="button" value="Принять на работу" class="login100-form-btn" style="--%>
-<%--                            margin-top: 30px;--%>
-<%--                        "/>--%>
-                                            </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                                          </div>
+                                      </form>
+                                            </c:forEach>
                                 </div>
-                              </div>
-                          </form>
-                                </c:forEach>
-    </div>
-    <a class="slider__control slider__control_left" href="#" role="button"></a>
-    <a class="slider__control slider__control_right" href="#" role="button"></a>
-  </div>
-       </div>                
-              </div>
-            </div>
+                      <a class="slider__control slider__control_left" href="#" role="button"></a>
+                      <a class="slider__control slider__control_right" href="#" role="button"></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>                                 
-          </div>    
+            </div>
           <footer class="text-right">
             <p>КП &copy; 2020 БГУИР
             | Developers: Кошман.В.Д. Городецкая А.М.</p>
-          </footer>        
+          </footer>
         </div>
       </div>
     </div>

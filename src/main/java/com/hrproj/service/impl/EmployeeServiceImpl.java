@@ -41,14 +41,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.deleteById(id);
     }
 
-    public Optional<Employee> getById(Long id) {
-        return employeeRepository.findById(id);
+    @Override
+    public Employee getByIdE(long id) {
+        return employeeRepository.findByIDE(id);
     }
 
-//    @Override
-//    public Employee getByFullName(String surname, String name, String patronymic) {
-//        return employeeRepository.findByFullName(surname, name, patronymic);
-//    }
     @Override
     public Employee getBySurname(String surname) {
         return employeeRepository.findBySurname(surname);

@@ -69,9 +69,9 @@
               <i class="fa fa-times"></i>
               <div class="square"></div>
               <h2 class="templatemo-inline-block">Руководство пользователя</h2><hr>
-             <p>Вы перешли в аккаунт администратора. Он позволяет вам проматривать статистику посещения ситстемы, а итак же её производительность, мониторить основные показатели и управлять пользователями системы. Только через данную страницу в всистему можно добавлять новый системных администраторов.
+             <p>Вы перешли в аккаунт администратора. Он позволяет вам просматривать статистику посещения системы, а также её производительность, мониторить основные показатели и управлять пользователями системы. Только через данную страницу в систему можно добавлять новый системных администраторов.
               </p>  
-              <p>Если вам больше не нужна данная справка, то вы можете её закрыть, нажап на соответствующий значёк в верхнем правом углу
+              <p>Если вам больше не нужна данная справка, то вы можете её закрыть, нажав на соответствующий значок в верхнем правом углу
               </p>             
             </div>
           </div>
@@ -96,60 +96,61 @@
                 </thead>
                 <tbody>
                 <c:forEach items="${candidates}" var = "candidate" >
+                    <form  method="post" action="/admin/user/delete">
                     <tr>
                         <td>${candidate.id}</td>
                         <td>${candidate.surname} ${candidate.name}</td>
                         <td>${candidate.user.username}</td>
                         <td>${candidate.user.password}</td>
                         <td>
-                            <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
+                            <a href="#openModal-${candidate.id}" class="templatemo-edit-btn">Изменить</a></td>
                         <td><button class="templatemo-edit-btn">Удалить</button>
                         </td>
                     </tr>
-                </c:forEach>
-                   
-<div id="openModal" class="modalDialog">
-  <div>
-    <a href="#close" title="Закрыть" class="close">X</a>
-   
-                          <form>
-                          <div class="modal-body">
-                            <input type="number" id="id" name="id" class="hidden">
-                            <div class="form-group required">
-                              <label for="ФИО сотрудника" class="col-sm-3 control-label">ФИО соискателя</label>
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Введите новое Фио" required="">
-                              </div>
-                            </div>
-                            <div class="form-group required">
-                              <label for="ФИО соискателя" class="col-sm-3 control-label">Почта</label>
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Введите новую почту" required="">
-                              </div>
-                            </div>
-                            
-                           
-                            <div class="form-group required">
-                              <label for="Время" class="col-sm-3 control-label">Пароль</label>
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" id="startedOn" name="startedOn" placeholder="Введите новоый пароль" required="">
-                              </div>
-                            </div>
-                            
-                          </div>
+                    </form>
+                    <form method="post" action="/admin/user/edit">
+                        <div id="openModal-${candidate.id}"  class="modalDialog" >
+                            <div>
+                                <a href="#close" title="Закрыть" class="close">X</a>
+                                <div class="modal-body">
+                                    <input name="id" style="outline: none; border: none; background: #f9f9f9;" value="${candidate.id}" class="hidden" readonly>
+                                    <div class="form-group required">
+                                        <label for="name" class="col-sm-3 control-label">Имя</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Введите новое имя" value="${candidate.name}" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="surname" class="col-sm-3 control-label">Фамилия</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="surname" name="surname" placeholder="Введите новую фамилию" value="${candidate.surname}" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="email" class="col-sm-3 control-label">Почта</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="email" name="email" placeholder="Введите новую почту" value="${candidate.email}" required="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <label for="password" class="col-sm-3 control-label">Пароль</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="password" name="password" placeholder="Введите новый пароль" >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="login100-form-btn">Сохранить</button>
+                                    <button class="login100-form-btn">
 
-                          <div class="modal-footer">
-                             <button type="submit" class="login100-form-btn">Сохранить изменения</button>
-                            <button class="login100-form-btn">
-                            
-                            <a href="#close" title="Закрыть" >Отмена</a>
-                          </button>
-                            
-                          </div>
-                        </form>
-                        
-  </div>
-</div>              
+                                        <a href="#close" title="Закрыть" >Отмена</a>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </c:forEach>
                 </tbody>
               </table>    
             </div>                          

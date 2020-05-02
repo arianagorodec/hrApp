@@ -28,4 +28,8 @@ public interface CandidateRepository extends JpaRepository<Candidate, Long> {
     @Modifying
     @Query("delete from Candidate e where e.id = :id")
     int deleteByIdCandidate(@Param("id") long id);
+
+    @Query("select e from Candidate e where e.id = :id")
+    Candidate findByIdC(@Param("id") long id);
+
 }

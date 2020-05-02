@@ -9,7 +9,6 @@ import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 import org.springframework.web.socket.config.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Configuration

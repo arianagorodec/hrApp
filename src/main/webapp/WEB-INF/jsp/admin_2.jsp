@@ -88,7 +88,6 @@
                 <thead>
                   <tr>
                     <td><a href="" class="white-text templatemo-sort-by"># <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">ФИО сотрудника <span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">Почта <span class="caret"></span></a></td>
                     <td><a href="" class="white-text templatemo-sort-by">Пароль <span class="caret"></span></a></td>
                     <td>Изменить запись</td>
@@ -96,174 +95,85 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1.</td>
-                   <td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                     <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                     <td><button class="templatemo-edit-btn">Удалить</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>2.</td>
-                   <td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                   <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                   <td><button class="templatemo-edit-btn">Удалить</button></td>
-                  </tr>
-                  <tr>
-                    <td>3.</td>
-                   <td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                    <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                    <td><button class="templatemo-edit-btn">Удалить</button></td>
-                  </tr>
-                  <tr>
-                    <td>4.</td>
-                  <td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                   <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                    <td><button class="templatemo-edit-btn">Удалить</button></td>
-                  </tr>
-                  <tr>
-                    <td>5.</td>
-<td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                   <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                    <td><button class="templatemo-edit-btn">Удалить</button></td>
-                  </tr>  
-                   <tr>
-                    <td>6.</td>
-                    <td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                  <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                   <td><button class="templatemo-edit-btn">Удалить</button></td>
-                  </tr>  
-                   <tr>
-                    <td>7.</td>
-                    <td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                    <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                   <td><button class="templatemo-edit-btn">Удалить</button></td>
-                  </tr>  
-                   <tr>
-                    <td>8.</td>
-                    <td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                   <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                   <td><button class="templatemo-edit-btn">Удалить</button></td>
-                  </tr> 
-                  <tr>
-                    <td>9.</td>
-                    <td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                   <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                    <td><button class="templatemo-edit-btn">Удалить</button></td>
-                  </tr>  
-                  <tr>
-                    <td>10.</td>
-                    <td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                   <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                    <td><button class="templatemo-edit-btn">Удалить</button></td>
-                  </tr>  
-                  <tr>
-                    <td>11.</td>
-                    <td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                   <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                   <td><button class="templatemo-edit-btn">Удалить</button></td>
-                  </tr>  
-                  <tr>
-                    <td>12.</td>
-                     <td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                   <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                    <td><button class="templatemo-edit-btn">Удалить</button></td>
-                  </tr>  
-                  <tr>
-                    <td>13.</td>
-                    <td>ФИО админа</td>
-                    <td>admin@mail.ru</td>
-                    <td>1010292020</td>
-                    <td>
-                    <a href="#openModal" class="templatemo-edit-btn">Изменить</a></td>
-                    <td><button class="templatemo-edit-btn">Удалить</button></td>
-                  </tr>     
-                   
-<div id="openModal" class="modalDialog">
-  <div>
-    <a href="#close" title="Закрыть" class="close">X</a>
-   
-                          <form>
-                          <div class="modal-body">
-                            <input type="number" id="id" name="id" class="hidden">
-                            <div class="form-group required">
-                              <label for="ФИО админа" class="col-sm-3 control-label">ФИО админа</label>
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Введите новое Фио" required="">
-                              </div>
-                            </div>
-                            <div class="form-group required">
-                              <label for="ФИО соискателя" class="col-sm-3 control-label">Почта</label>
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Введите новую почту" required="">
-                              </div>
-                            </div>
-                            
-                           
-                            <div class="form-group required">
-                              <label for="Время" class="col-sm-3 control-label">Пароль</label>
-                              <div class="col-sm-9">
-                                <input type="text" class="form-control" id="startedOn" name="startedOn" placeholder="Введите новоый пароль" required="">
-                              </div>
-                            </div>
-                            
-                          </div>
+                  <c:forEach items="${admins}" var = "admin" >
+                      <form  method="post" action="/admin/2/delete">
+                          <tr>
+                              <td>${admin.id}</td>
+                              <td>${admin.username}</td>
+                              <td>${admin.password}</td>
+                              <td>
+                                  <a href="#openModal-${admin.id}" class="templatemo-edit-btn">Изменить</a></td>
+                              <td><button class="templatemo-edit-btn">Удалить</button>
+                              </td>
+                          </tr>
+                      </form>
+                      <form method="post" action="/admin/2/edit">
+                          <div id="openModal-${admin.id}"  class="modalDialog300"  >
+                              <div>
+                                  <a href="#close" title="Закрыть" class="close">X</a>
+                                  <div class="modal-body">
+                                      <input name="id" style="outline: none; border: none; background: #f9f9f9;" value="${admin.id}" class="hidden" readonly>
+                                      <div class="form-group required">
+                                          <label for="username" class="col-sm-3 control-label">Логин</label>
+                                          <div class="col-sm-9">
+                                              <input type="text" class="form-control" id="username" name="username" placeholder="Введите новый логин" value="${admin.username}" required="">
+                                          </div>
+                                      </div>
+                                      <div class="form-group required">
+                                          <label for="password" class="col-sm-3 control-label">Пароль</label>
+                                          <div class="col-sm-9">
+                                              <input type="text" class="form-control" id="password" name="password" placeholder="Введите новый пароль" >
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="submit" class="login100-form-btn">Сохранить</button>
+<%--                                      <button class="login100-form-btn">--%>
 
-                          <div class="modal-footer">
-                             <button type="submit" class="login100-form-btn">Сохранить изменения</button>
-                            <button class="login100-form-btn">
-                            
-                            <a href="#close" title="Закрыть" >Отмена</a>
-                          </button>
-                            
+<%--                                          <a href="#close" title="Закрыть" >Отмена</a>--%>
+<%--                                      </button>--%>
+
+                                  </div>
+                              </div>
                           </div>
-                        </form>
-                        
-  </div>
-</div>              
+                      </form>
+                  </c:forEach>
                 </tbody>
 
               </table>  
 
             </div>   
-            <button class="templatemo-edit-btn" id="table_button">Добавить нового администратора</button>                       
-          </div>                         
+            <button class="login100-form-btn" id="table_button"><a href="#openModal" title="Добавить нового администратора" >Добавить нового администратора</a></button>
+          </div>
+                  <form method="post" action="/admin/2/add">
+                  <div id="openModal"  class="modalDialog300"  >
+                      <div>
+                          <a href="#close" title="Закрыть" class="close">X</a>
+                          <div class="modal-body">
+                              <div class="form-group required">
+                                  <label for="username" class="col-sm-3 control-label">Логин</label>
+                                  <div class="col-sm-9">
+                                      <input type="text" class="form-control" id="username1" name="username" placeholder="Введите логин" required="">
+                                  </div>
+                              </div>
+                              <div class="form-group required">
+                                  <label for="password" class="col-sm-3 control-label">Пароль</label>
+                                  <div class="col-sm-9">
+                                      <input type="text" class="form-control" id="password1" name="password" placeholder="Введите  пароль"  required="">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="submit" class="login100-form-btn">Сохранить</button>
+                              <%--                                      <button class="login100-form-btn">--%>
+
+                              <%--                                          <a href="#close" title="Закрыть" >Отмена</a>--%>
+                              <%--                                      </button>--%>
+
+                          </div>
+                      </div>
+                  </div>
+                  </form>
               </div>
             </div>           
           </div> <!-- Second row ends -->
@@ -283,14 +193,14 @@
     
     <script type="text/javascript" src="${contextPath}/resources/js5/templatemo-script.js"></script>
     
-    <script>
-$("#table_button").on("click", function () {   
-$("#myTable > tbody:last").append("<tr><td>14</td><td>ФИО admin</td><td>admin@mail.ru</td><td>1010292020</td><td><a href=\"#openModal\" class=\"templatemo-edit-btn\">Изменить</a></td><td><button class=\"templatemo-edit-btn\">Удалить</button></td></tr>");
-});
-    </script>    <!-- Templatemo Script -->
-<script>$('table tr').on( 'click',function(){
-  $(this).remove()
-})</script>   <!-- Templatemo Script -->
+<%--    <script>--%>
+<%--$("#table_button").on("click", function () {   --%>
+<%--$("#myTable > tbody:last").append("<tr><td>14</td><td>ФИО admin</td><td>admin@mail.ru</td><td><a href=\"#openModal\" class=\"templatemo-edit-btn\">Изменить</a></td><td><button class=\"templatemo-edit-btn\">Удалить</button></td></tr>");--%>
+<%--});--%>
+<%--    </script>    <!-- Templatemo Script -->--%>
+<%--<script>$('table tr').on( 'click',function(){--%>
+<%--  $(this).remove()--%>
+<%--})</script>   <!-- Templatemo Script -->--%>
 
   </body>
 </html>

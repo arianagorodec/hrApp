@@ -59,7 +59,7 @@ public class RestoreController {
         boolean isActivated = userService.activatedUser(code);
         if(isActivated) {
             Log log = new Log();
-            log.setInfo("Попытка восстаовления пароля");
+            log.setInfo("Попытка восстановления пароля");
             log.setUser(userService.getByActivationCode(code));
             log.setTime(new Date());
             logService.addLog(log);

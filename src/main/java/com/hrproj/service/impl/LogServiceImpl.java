@@ -61,6 +61,10 @@ public class LogServiceImpl implements LogService {
     public List<Log> getByInfo(String info) {
         return logRepository.findByInfo(info);
     }
+
+    public List<Log> getChanges() {
+        return logRepository.findByChanges();
+    }
 }
 
 

@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface CandidateService {
     Candidate addCandidate(Candidate candidate);
     void deleteById(long id);
-    Optional<Candidate> getById(Long id);
+    Candidate getById(Long id);
     Candidate getBySurname(String surname);
     Candidate getByName(String name);
     //Candidate getByFullName(String surname, String name, String patronymic);

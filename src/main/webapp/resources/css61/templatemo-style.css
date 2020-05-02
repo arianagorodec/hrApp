@@ -1786,7 +1786,7 @@ height: 885px;
 
 .modalDialog > div {
 	width: 900px;
-	height: 360px;
+	height: 450px;
 	position: relative;
 	margin: 10% auto;
 	padding: 5px 20px 13px 20px;
@@ -1794,6 +1794,40 @@ height: 885px;
 	background: white;
 	
 }
+
+.modalDialog300 {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	display: none;
+	pointer-events: none;
+}
+
+.modalDialog300:target {
+	display: block;
+	pointer-events: auto;
+}
+
+.modalDialog300 > div {
+	width: 900px;
+	height: 270px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: white;
+
+}
+
+
 .modalDialog2 {
 	position: fixed;
 	font-family: Arial, Helvetica, sans-serif;

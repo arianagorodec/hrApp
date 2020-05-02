@@ -1,7 +1,10 @@
 package com.hrproj.service.impl;
 
+import com.hrproj.config.WebSecurityConfig;
+import com.hrproj.config.WebSocketConfig;
 import com.hrproj.entity.Candidate;
 import com.hrproj.entity.Employee;
+import com.hrproj.entity.Log;
 import com.hrproj.entity.User;
 import com.hrproj.entity.enums.RoleEnum;
 import com.hrproj.repository.CandidateRepository;
@@ -9,18 +12,20 @@ import com.hrproj.repository.EmployeeRepository;
 import com.hrproj.repository.UserRepository;
 import com.hrproj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
+import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
+import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserDetailsService, UserService {
@@ -36,6 +41,9 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     private EmployeeRepository employeeRepository;
     @Autowired
     private EmployeeServiceImpl employeeService;
+    @Autowired
+    LogServiceImpl logService;
+
 
 //    @Autowired
 //    RoleRepository roleRepository;
@@ -85,6 +93,12 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             candidate.setHrEmail(HrList.get(rand.nextInt(HrList.size())).getEmail());
             candidate.setSessionCode(UUID.randomUUID().toString());
             candidateRepository.save(candidate);
+            Log log = new Log();
+            log.setUser(user);
+            log.setTime(new Date());
+            log.setInfo("Зарегестрирован");
+            logService.addLog(log);
+
         }
         else {
             List<Employee> employeeList = employeeService.getAll();
@@ -113,6 +127,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                 employee.setEmail(user.getUsername());
                 employee.setUser(user);
                 employeeRepository.save(employee);
+                Log log = new Log();
+                log.setUser(user);
+                log.setTime(new Date());
+                log.setInfo("Зарегестрирован");
+                logService.addLog(log);
             }
             else
                 return false;
@@ -123,6 +142,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     public boolean deleteUser(Long userId) {
         if (userRepository.findById(userId).isPresent()) {
         //if (userRepository.findById(userId)!=null) {
+            Log log = new Log();
+            log.setUser(getById_user(userId));
+            log.setTime(new Date());
+            log.setInfo("Удалён");
+            logService.addLog(log);
             userRepository.deleteById(userId);
             return true;
         }
@@ -153,6 +177,12 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     @Override
     public User getById_user(long id) {
         return userRepository.findById(id);
+    }
+
+
+    @Override
+    public List<User> getAdmin() {
+        return userRepository.findAdmin();
     }
 
     public boolean activatedUser(String code) {

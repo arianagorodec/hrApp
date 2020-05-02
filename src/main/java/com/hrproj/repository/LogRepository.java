@@ -21,4 +21,6 @@ public interface LogRepository extends JpaRepository<Log,Long> {
     List<Log> findByDate(@Param("date") Date date);
     @Query("select a from Log a where a.info = :info")
     List<Log> findByInfo(@Param("info") String info);
+    @Query("select a from Log a where a.info != 'Вошёл' and a.info != 'Вышел'")
+    List<Log> findByChanges();
 }
