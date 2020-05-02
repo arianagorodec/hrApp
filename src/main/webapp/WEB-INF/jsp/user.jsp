@@ -116,7 +116,36 @@
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                   </ul>
-                <form method="post" enctype="multipart/form-data">
+                    <div id="open" class="modal">
+                        <div>
+                            <a href="#close" title="Закрыть" class="close">X</a>
+
+                            <form>
+                                <div class="modal-body">
+                                    <input type="networc" id="id" name="id" class="hidden">
+                                    <div class="form-group required">
+                                        <label  class="col-sm-3 control-label" style="color:#606061 ">Ссылка на социальную сеть</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Введите ссылку" required="">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="submit" class="login100-form-btn">Сохранить изменения</button>
+                                    <button class="login100-form-btn">
+
+                                        <a href="#close" title="Закрыть" >Отмена</a>
+                                    </button>
+
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <form method="post" enctype="multipart/form-data">
                   <ul class="list_download">
                     <input type="file" name="file" id="file"  />
                     <label for="file">Новый аватар</label>
