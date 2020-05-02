@@ -5,24 +5,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>User</title>
-    <meta name="description" content="">
-    <meta name="author" content="templatemo">
+    <meta name="description" content=""/>
+    <meta name="author" content="templatemo"/>
    
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,700' rel='stylesheet' type='text/css'>
      <link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
-<meta name="apple-mobile-web-app-title" content="CodePen">
+<meta name="apple-mobile-web-app-title" content="CodePen"/>
 <link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
 <link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
 <title>CodePen - Chat Widget</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
-    <link href="${contextPath}/resources/css3/font-awesome.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css3/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css3/templatemo-style.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"/>
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'/>
+    <link href="${contextPath}/resources/css3/font-awesome.min.css" rel="stylesheet"/>
+    <link href="${contextPath}/resources/css3/bootstrap.min.css" rel="stylesheet"/>
+    <link href="${contextPath}/resources/css3/templatemo-style.css" rel="stylesheet"/>
 
    </head>
   <body>  
@@ -34,14 +34,14 @@
           <h1>User</h1>
         </header>
         <div class="profile-photo-container">
-          <img src="${contextPath}/resources/images3/profile-photo.jpg" alt="Profile Photo" class="img-responsive">
+          <img src="${contextPath}/resources/images3/profile-photo.jpg" alt="Profile Photo" class="img-responsive"/>
           <div class="profile-photo-overlay"></div>
         </div>      
         <!-- Search box -->
         <form class="templatemo-search-form" role="search">
           <div class="input-group">
               <button type="submit" class="fa fa-search"></button>
-              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">           
+              <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term"/>
           </div>
         </form>
         <div class="mobile-menu-icon">
@@ -73,7 +73,7 @@
             <div class="templatemo-content-widget white-bg col-2">
               <i class="fa fa-times"></i>
               <div class="square"></div>
-              <h2 class="templatemo-inline-block">Инструкция для пользвователя</h2><hr>
+              <h2 class="templatemo-inline-block">Инструкция для пользвователя</h2><hr/>
               <p>Эта ваш личный аккаунт соискателя. Он позволяет оставатся на связи с нами, а так же  включает в себя разнообразные функции: ваш личный профиль, анкету которую вы можете заполнить по желанию и специальный раздел,где вы можете пообщатся с нашим сотрудником и узнать о нас по больше.</p>
               <p>Для того что бы закрыть данную справку нажмите на крестик в верхнем правом углу.</p>              
             </div>                   
@@ -95,7 +95,7 @@
             <div class="media" style=" width:1400px;">
             <c:if test="${not empty photo}">
               <div class="d-flex">
-                <img src="/photoUser/${photo}" width="668" height="690" alt="profile">
+                <img src="/photoUser/${photo}" width="668" height="690" alt="profile"/>
               </div>
             </c:if>
               <div class="media-body">
@@ -122,11 +122,11 @@
 
                             <form>
                                 <div class="modal-body">
-                                    <input type="networc" id="id" name="id" class="hidden">
+                                    <input type="networc" id="id" name="id" class="hidden"/>
                                     <div class="form-group required">
                                         <label  class="col-sm-3 control-label" style="color:#606061 ">Ссылка на социальную сеть</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Введите ссылку" required="">
+                                            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Введите ссылку" required=""/>
                                         </div>
                                     </div>
 
@@ -179,6 +179,5 @@
     <script src="${contextPath}/resources/js3/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
     <script src="${contextPath}/resources/js3/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
          <script type="text/javascript" src="${contextPath}/resources/js3/templatemo-script.js"></script>      <!-- Templatemo Script -->
-
   </body>
 </html>
