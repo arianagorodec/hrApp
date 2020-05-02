@@ -101,7 +101,7 @@
                   <h6>Hello Everybody, i am</h6>
                   <h3>${name}</h3>
                   <h4>Сотрудник</h4>
-                  <p>Я являюсь соискателем, в вашем банковском учереждении и хотел бы стать полноценным сотрудником вашей органиизации.</p>
+                  <p>Я являюсь сотрудником, в вашем банковском учереждении и хотел бы приносить пользу вашей органиизации.</p>
                   <ul class="list basic_info">
                     <li><a href="#"><i class="fa fa-calendar-o"></i> ${birthday}</a></li>
                     <li><a href="#"><i class="fa fa-phone"></i> ${mobphone}</a></li>
@@ -119,8 +119,8 @@
                   <form method="post" enctype="multipart/form-data">
                   <ul class="list_download">
                     <input type="file" name="file" id="file" />
-                    <label for="file">Upload photo to avatar</label>
-                    <button class="login100-form-btn" href="#" >Upload</button>
+                    <label for="file">Новый аватар</label>
+                    <button class="login100-form-btn" href="#" >Заменить</button>
                  </ul>
                   </form>
                 </div>

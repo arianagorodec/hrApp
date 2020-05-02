@@ -31,12 +31,12 @@ function show_hide_password(target){
 
 function show_hide_password2(target){
     var input = document.getElementById('password-input2');
-    if (input.getAttribute('type') == 'password2') {
-        target.classList.add('view');
+    if (input.getAttribute('type') == 'password') {
+        target.classList.add('view2');
         input.setAttribute('type', 'text2');
     } else {
-        target.classList.remove('view');
-        input.setAttribute('type', 'password2');
+        target.classList.remove('view2');
+        input.setAttribute('type', 'password');
     }
     return false;
 }

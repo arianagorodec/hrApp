@@ -124,8 +124,8 @@
                   <form method="post" enctype="multipart/form-data">
                     <ul class="list_download">
                       <input type="file" name="file" id="file" />
-                      <label for="file">Upload photo to avatar</label>
-                      <button class="login100-form-btn" href="#" >Upload</button>
+                      <label for="file">Новый аватар</label>
+                      <button class="login100-form-btn" href="#" >Заменить</button>
                     </ul>
                   </form>
                 </div>
