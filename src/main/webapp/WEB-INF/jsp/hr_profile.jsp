@@ -153,11 +153,11 @@
                     <div class="panel panel-default margin-10">
                         <div class="panel-heading"><h2>Досье соискателей</h2></div>
                         <div class="panel-body">
-                            <div class="slider">
-                                <div class="slider__wrapper">
+                            <div class="slider2">
+                                <div class="slider__wrapper2">
                                     <c:forEach items="${candidateForm}" var = "candidate" >
                                       <form method="post" action="/hr/profile/candidate">
-                                          <div class="slider__item">
+                                          <div class="slider__item2">
                                               <div class="banner_content">
                                                 <div class="media" style=" width:1400px;">
                                                     <c:if test="${not empty candidate.photo}">
