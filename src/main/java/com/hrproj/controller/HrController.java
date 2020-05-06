@@ -424,7 +424,8 @@ public class HrController {
                 userService.editUser(user);
 
                 String message = String.format("Здравствуйте, %s!\n"
-                        + "Вот ваша ссылка на восстановление пароля: " +
+                        + "Поздравляем! Вас приняли на работу!"
+                        + "Вот ваша ссылка на заполнение данных: " +
                         "http://localhost:8080/inf/%s", user.getUsername(), user.getActivationCode());
                 mailSender.sendActivationPage(email, message);
             }
