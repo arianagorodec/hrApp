@@ -20,6 +20,8 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         List<Candidate> candidates = candidateService.getAll();
+        registry.addEndpoint("/message-" + 1);
+        registry.addEndpoint("/message-" + 1).withSockJS();
         if(candidates.size()!=0) {
             for (Candidate candidate : candidates) {
                 registry.addEndpoint("/message-" + candidate.getSessionCode());

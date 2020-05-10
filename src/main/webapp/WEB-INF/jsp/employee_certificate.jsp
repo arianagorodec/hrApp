@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +73,7 @@
               <i class="fa fa-times"></i>
               <div class="square"></div>
               <h2 class="templatemo-inline-block">Инструкция для пользователя</h2><hr>
-              <p>Добро пожаловать в ваш аккаует сотрудника. Данный аккаунт предоставляет вам возможность контролировать важные экономические показатели в режиме реального времени, а так же просматривать статистику за определённый период.</p><p>
+              <p>Добро пожаловать в ваш аккаунт сотрудника. Данный аккаунт предоставляет вам возможность контролировать важные экономические показатели в режиме реального времени, а так же просматривать статистику за определённый период.</p><p>
               В аккаунте содержится ваша личная информация. Так же здесь размещается календарь событий, который включает в себя рассписание встреч, больничных и отпусков. При помощи вашей страничке вы можете просматривать свои расчётные листы и заказывать нужные вам документы онлайн.</p>
               <p>Если вы ознакомились со справочной информацией и она вам больше не нужна, нажните на крестик в правом верхнем углу</p>             
             </div>
@@ -80,16 +81,16 @@
             <div class="templatemo-content-widget white-bg col-2">
               <i class="fa fa-times"></i>
                       <h2 class="templatemo-inline-block">Статус выполнения вашей справки</h2><hr>
-              <div class="container" style="
-    width: 130px;margin-left: 150px;">
+              <div class="container" style="width: 130px;margin-left: 150px;">
     <div class="row">
       <div class="col text-center">
         <div id="fluid-meter" class="mx-auto"></div>
-          <form method="post">
-<%--          <input type="text" id="numCert" type="number" value="1">--%>
-          <button type="submit" id="submit-percentage-1">Узнать</button>
-          </form>
-        <input type="text" id="percentage-1" type="number" value="${percent}">
+              <select id="percentage-1">
+                  <c:forEach items="${certificateList}" var = "certificate" >
+                  <option value="${certificate.percent}">${certificate.type} - <fmt:formatDate value="${certificate.orderDate}" pattern="dd-MM-yyyy" /></option>
+                  </c:forEach>
+              </select>
+          <button type="button" id="submit-percentage-1">Узнать</button>
       </div>
    
     </div>

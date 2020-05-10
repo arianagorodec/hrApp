@@ -76,6 +76,10 @@ public class WorkerController {
     public String  certificateEmployee(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Employee employee = employeeService.getByEmail(auth.getName());
+
+        List<Certificate> certificateList = certificateService.getByIdEmployee(employee.getId());
+        model.addAttribute("certificateList", certificateList);
+
         model.addAttribute("name", employee.getSurname()+" "+employee.getName());
         String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
         model.addAttribute("date", date);

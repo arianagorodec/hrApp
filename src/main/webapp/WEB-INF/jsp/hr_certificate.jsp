@@ -1,6 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -84,17 +85,20 @@
             <div class="templatemo-content-widget white-bg col-2">
               <i class="fa fa-times"></i>
                       <h2 class="templatemo-inline-block">Статус выполнения вашей справки</h2><hr>
-              <div class="container" style="
-    width: 130px;margin-left: 150px;">
-    <div class="row">
-      <div class="col text-center">
-        <div id="fluid-meter" class="mx-auto"></div>
-      </div>
-   
-    </div>
-  </div>
-
-</div>           
+              <div class="container" style=" width: 130px;margin-left: 150px;">
+                <div class="row">
+                  <div class="col text-center">
+                      <div id="fluid-meter" class="mx-auto"></div>
+                        <select id="percentage-1">
+                            <c:forEach items="${certificateList}" var = "certificate" >
+                                <option value="${certificate.percent}">${certificate.type} - <fmt:formatDate value="${certificate.orderDate}" pattern="dd-MM-yyyy" /></option>
+                            </c:forEach>
+                        </select>
+                        <button type="button" id="submit-percentage-1">Узнать</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
 
