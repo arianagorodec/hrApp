@@ -32,20 +32,56 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, Model model) {
-
+        boolean ch = true;
         if (bindingResult.hasErrors()) {
             return "registration";
         }
+        if(userForm.getName().equals("")) {
+            model.addAttribute("nameError", "Заполните имя");
+            ch=false;
+        }
+
+        if(userForm.getSurname().equals("")) {
+            model.addAttribute("surnameError", "Заполните фамилию");
+            ch=false;
+        }
+        if(userForm.getMobphone().equals("")) {
+            model.addAttribute("mobphoneError", "Заполните мобильный телефон");
+            ch=false;
+        }
+        if(userForm.getBirthday().equals("")||userForm.getBirthday()==null) {
+            model.addAttribute("birthdayError", "Заполните дату рождения");
+            ch=false;
+        }
+
+        if(userForm.getGender()==null) {
+            model.addAttribute("genderError", "Заполните пол");
+            ch=false;
+        }
+
         if (!userForm.getPassword().equals(userForm.getPasswordConfirm())){
             model.addAttribute("passwordError", "Пароли не совпадают");
-            return "registration";
+            ch=false;
         }
+
+        if(userForm.getPassword().equals("")||userForm.getPasswordConfirm().equals("")) {
+            model.addAttribute("passwordError", "Заполните пароль");
+            ch=false;
+        }
+
+        if (!userForm.getUsername().equals("")){
+            model.addAttribute("usernameError", "Заполните email");
+            ch=false;
+        }
+
 //        System.out.println(userForm.getBirthday());
         if (!userService.saveUser(userForm)){
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
-            return "registration";
+            ch=false;
         }
-
-        return "redirect:/";
+        if(ch)
+            return "redirect:/";
+        else
+            return "registration";
     }
 }

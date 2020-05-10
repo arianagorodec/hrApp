@@ -11,7 +11,6 @@ public class Person {
     private String surname;
     private String name;
     private String patronymic;
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date birthday;
     private String mobphone;
     private String email;

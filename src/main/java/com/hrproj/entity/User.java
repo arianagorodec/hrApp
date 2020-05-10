@@ -200,14 +200,22 @@ public class User implements UserDetails {
         this.person.setPatronymic(patronymic);
     }
 
-    public Date getBirthday() {
-        return person.getBirthday();
+    public String getBirthday() {
+        String date ="";
+        if(person.getBirthday()!=null)
+            if(!person.getBirthday().equals(""))
+                date = new SimpleDateFormat("dd/MM/yyyy").format(person.getBirthday());
+        return date;
     }
 
     public void setBirthday(String birthdayS) throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-        Date birthday= format.parse(birthdayS);
-        this.person.setBirthday(birthday);
+        if(birthdayS!=null) {
+            if(!birthdayS.equals("")) {
+                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                Date birthday = format.parse(birthdayS);
+                this.person.setBirthday(birthday);
+            }
+        }
     }
 
     public String getMobphone() {

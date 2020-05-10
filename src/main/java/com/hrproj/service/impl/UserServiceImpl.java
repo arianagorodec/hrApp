@@ -87,7 +87,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
             candidate.setSurname(user.getSurname());
             candidate.setMobphone(user.getMobphone());
             candidate.setGender(user.getGender());
-            candidate.setBirthday(user.getBirthday());
+            candidate.setBirthday(user.getPerson().getBirthday());
             candidate.setEmail(user.getUsername());
             candidate.setUser(user);
             candidate.setHrEmail(HrList.get(rand.nextInt(HrList.size())).getEmail());
@@ -123,7 +123,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                 employee.setSurname(user.getSurname());
                 employee.setMobphone(user.getMobphone());
                 employee.setGender(user.getGender());
-                employee.setBirthday(user.getBirthday());
+                employee.setBirthday(user.getPerson().getBirthday());
                 employee.setEmail(user.getUsername());
                 employee.setUser(user);
                 employeeRepository.save(employee);

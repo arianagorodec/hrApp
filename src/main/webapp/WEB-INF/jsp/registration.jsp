@@ -42,16 +42,22 @@
 									<div class="form-holder">
 										<fieldset>
 											<legend>Имя</legend>
-											<form:input type="text" path="name" class="form-control" id="first-name" name="first-name" placeholder="Имя" autofocus="true" ></form:input>
+											<form:input type="text" path="name" class="form-control" id="first-name" name="first-name" placeholder="Имя"></form:input>
 <%--											<input type="text" class="form-control" id="first-name" name="first-name" placeholder="Имя" required>--%>
 										</fieldset>
+										<form:errors path="name"></form:errors>
+										<p style="color: red">${nameError}</p>
 									</div>
 									<div class="form-holder">
 										<fieldset>
 											<legend>Фамилия</legend>
-											<form:input type="text" path="surname" class="form-control" id="last-name" name="last-name" placeholder="Фамилия" autofocus="true"></form:input>
+											<form:input type="text" path="surname" class="form-control" id="last-name" name="last-name" placeholder="Фамилия" ></form:input>
+<%--											<form:errors path="lastname"></form:errors>--%>
+<%--												${lastnameError}--%>
 <%--											<input type="text" class="form-control" id="last-name" name="last-name" placeholder="Фамилия" required>--%>
 										</fieldset>
+										<form:errors path="surname" ></form:errors>
+										<p style="color: red">${surnameError}</p>
 									</div>
 								</div>
 								<div class="form-row">
@@ -61,20 +67,21 @@
 											<div>
 												<form:input type="text" name="your_email" id="your_email" class="form-control" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" path="username" placeholder="example@email.com"
 															autofocus="true"></form:input>
-												<form:errors path="username"></form:errors>
-													${usernameError}
 											</div>
-<%--											<input type="text" name="your_email" id="your_email" class="form-control" pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="example@email.com" required>--%>
 										</fieldset>
+										<form:errors path="username"></form:errors>
+										<p style="color: red">${usernameError}</p>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-2">
 										<fieldset>
 											<legend>Номер телефона</legend>
-											<form:input type="text" path="mobphone" class="form-control" id="phone" name="phone" placeholder="+375 (29)-999-7777" autofocus="true"></form:input>
+											<form:input type="text" path="mobphone" class="form-control" id="phone" name="phone" placeholder="+375 (29)-999-7777" ></form:input>
 <%--											<input type="text" class="form-control" id="phone" name="phone" placeholder="+375 (29)-999-7777" required>--%>
 										</fieldset>
+										<form:errors path="mobphone"></form:errors>
+										<p style="color: red">${mobphoneError}</p>
 									</div>
 								</div>
 
@@ -86,19 +93,22 @@
 									<form:radiobutton path="gender" id="gender-male" name="gender" value="male"/>
 								    <label for="gender-male">Мужсой</label>
 
-									<form:radiobutton path="gender" id="gender-female" name="gender" value="female"/>
+									<form:radiobutton path="gender" id="gender-female" name="gender" value="female" />
 <%--								    <input id="gender-female" type="radio" name="gender" value="female"required/>--%>
 								    <label for="gender-female">Женский</label>
 								</fieldset>
+										<form:errors path="gender"></form:errors>
+										<p style="color: red">${genderError}</p>
 							</div>
 							</div>
-<%--										<form:input type="date" path="birthday" class="form-control" id="birthday" name="birthday" ></form:input>--%>
 								<div class="form-row form-row-date">
 									<div class="form-holder form-holder-2">
 										<fieldset>
 											<legend>Дата рождения</legend>
-											<form:input path="birthday" type="text" name="birthday" id="birthday" class="form-control" pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" placeholder="dd/mm/yyyy" autofocus="true"></form:input>
+											<form:input path="birthday" type="text" name="birthday" id="birthday" class="form-control" pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" placeholder="dd/mm/yyyy" ></form:input>
 										</fieldset>
+										<form:errors path="birthday" ></form:errors>
+										<p style="color: red">${birthdayError}</p>
 									</div>
 								</div>
 							</div>
@@ -121,7 +131,7 @@
 								</div>
 								<div class="form-row">
 									<div class="form-holder form-holder-1">
-										<form:input type="text" path="idP" name="find_bank" id="find_bank" placeholder="Ваше ID сотрудника" class="form-control" autofocus="true"></form:input>
+										<form:input type="text" path="idP" name="find_bank" id="find_bank" placeholder="Ваше ID сотрудника" class="form-control"></form:input>
 <%--										<input type="text" name="find_bank" id="find_bank" placeholder="Ваше ID сотрудника" class="form-control" required>--%>
 									</div>						
 								</div>
@@ -130,7 +140,7 @@
 									<div class="form-holder form-holder-1">
 										<div class="wrap-input100 validate-input" data-validate = "Password is required">
 											<div class="password">
-												<form:input type="password" id="password-input" path="password"  placeholder="Введите пароль" name="password"></form:input>
+												<form:input  type="password" id="password-input" path="password"  placeholder="Введите пароль" name="password"></form:input>
 <%--												<input type="password" id="password-input" placeholder="Введите пароль" name="password">--%>
 												<a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
 											</div>
@@ -149,7 +159,7 @@
 															id="password-input2" placeholder="Введите пароль повторно" name="password2"></form:input>
 												<a href="#" class="password-control2" onclick="return show_hide_password2(this);"></a>
 												<form:errors path="password"></form:errors>
-													${passwordError}
+												<p style="color: red">${passwordError}</p>
 <%--												<input type="password" id="password-input2" placeholder="Введите пароль повторно" name="password2">--%>
 <%--												<a href="#" class="password-control2" onclick="return show_hide_password2(this);"></a>--%>
 											</div>
@@ -189,15 +199,15 @@
                 <legend>Условия и рассылка
                 </legend>
                 <p class="agreement">
-                    <input type="checkbox" value="">
+                    <input required="required" type="checkbox" value="">
                     <label>*  Я принимаю <a href="#"> Условия использования</a></label>
                 </p>
                 <p class="agreement">
-                    <input type="checkbox" value="">
+                    <input required="required" type="checkbox" value="">
                     <label>Я хочу получать персональные предложения от вашего сайта</label>
                 </p>
                 <p class="agreement">
-                    <input type="checkbox" value="">
+                    <input required="required" type="checkbox" value="">
                     <label>Разрешить партнерам присылать мне персонализированные предложения и сопутствующие услуги</label>
                 </p>
             </fieldset>
