@@ -112,9 +112,9 @@
                   </ul>
 
                   <ul class="list personal_social">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#open"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#open"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#open"><i class="fa fa-linkedin"></i></a></li>
                   </ul>
                     <div id="open" class="modal">
                         <div>

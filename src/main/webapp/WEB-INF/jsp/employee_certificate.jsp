@@ -85,12 +85,12 @@
     <div class="row">
       <div class="col text-center">
         <div id="fluid-meter" class="mx-auto"></div>
-              <select id="percentage-1">
+              <select id="percentage-1"  class="form-control">
                   <c:forEach items="${certificateList}" var = "certificate" >
                   <option value="${certificate.percent}">${certificate.type} - <fmt:formatDate value="${certificate.orderDate}" pattern="dd-MM-yyyy" /></option>
                   </c:forEach>
               </select>
-          <button type="button" id="submit-percentage-1">Узнать</button>
+          <button type="button" id="submit-percentage-1" class="login100-form-btn" style="margin-left: 80px;">Узнать</button>
       </div>
    
     </div>
