@@ -172,7 +172,7 @@
                                     <div class="form-group required">
                                         <label  class="col-sm-3 control-label" style="color:#606061 ">Ссылка на социальную сеть</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="linkedinLink" name="linkedinLink" placeholder="Введите ссылку" value="${linked}" required=""/>
+                                            <input type="text" class="form-control" id="linkedLink" name="linkedLink" placeholder="Введите ссылку" value="${linked}" required=""/>
                                         </div>
                                     </div>
                                 </div>
