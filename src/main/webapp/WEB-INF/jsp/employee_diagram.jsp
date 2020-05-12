@@ -147,29 +147,69 @@
     <script src="${contextPath}/resources/js3/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
     <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
     <script>
-      /* Google Chart 
+      var uri = 'https://www.nbrb.by/API/';
+      var dollar;
+      var eur;
+      var rub;
+      var uan;
+      var funt;
+
+      $.getJSON(uri + 'ExRates/Rates/' + '145', { 'ParamMode': 0 })
+              .done(function (data) {
+                var dollarJSON=JSON.stringify(data);
+                dollar = JSON.parse(dollarJSON).Cur_OfficialRate;
+              });
+
+      $.getJSON(uri + 'ExRates/Rates/' + '292', { 'ParamMode': 0 })
+              .done(function (data) {
+                var eurJSON=JSON.stringify(data);
+                eur = JSON.parse(eurJSON).Cur_OfficialRate;
+              });
+
+      $.getJSON(uri + 'ExRates/Rates/' + '298', { 'ParamMode': 0 })
+              .done(function (data) {
+                var rubJSON=JSON.stringify(data);
+                rub = JSON.parse(rubJSON).Cur_OfficialRate;
+              });
+
+      $.getJSON(uri + 'ExRates/Rates/' + '304', { 'ParamMode': 0 })
+              .done(function (data) {
+                var uanJSON=JSON.stringify(data);
+                uan = JSON.parse(uanJSON).Cur_OfficialRate;
+              });
+
+      $.getJSON(uri + 'ExRates/Rates/' + '143', { 'ParamMode': 0 })
+              .done(function (data) {
+                var funtJSON=JSON.stringify(data);
+                funt = JSON.parse(funtJSON).Cur_OfficialRate;
+              });
+
+      /* Google Chart
       -------------------------------------------------------------------*/
       // Load the Visualization API and the piechart package.
       google.load('visualization', '1.0', {'packages':['corechart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
-      google.setOnLoadCallback(drawChart); 
-      
+      google.setOnLoadCallback(drawChart);
+
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
-      function drawChart() {
 
+
+      function drawChart() {
+        // ratetoday();
+        // alert(zlot);
           // Create the data table.
           var data = new google.visualization.DataTable();
           data.addColumn('string', 'Topping');
           data.addColumn('number', 'Slices');
           data.addRows([
-            ['Доллор', 2.442],
-            ['Евро', 2.629],
-            ['Российский руб.(100)', 3.27],
-            ['Юань(100)', 6.84],
-            ['Злотый(10)', 5.61]
+            ['Доллар', dollar],
+            ['Евро', eur],
+            ['Российский руб.(100)', rub],
+            ['Юань(100)', uan],
+            ['Фунт стерлингов', funt]
           ]);
 
           // Set chart options
@@ -194,14 +234,14 @@
             {
               this.location.reload(false); /* false to get page from cache */
             }, 200);
-          });      
+          });
         } else {
           $(window).resize(function(){
             drawChart();
-          });  
-        }   
+          });
+        }
       });
-      
+
     </script>
     <script type="text/javascript" src="${contextPath}/resources/js3/templatemo-script.js"></script>      <!-- Templatemo Script -->
 
