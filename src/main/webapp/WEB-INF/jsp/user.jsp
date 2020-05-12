@@ -116,6 +116,7 @@
                     <li><a href="#open"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#open"><i class="fa fa-linkedin"></i></a></li>
                   </ul>
+
                     <div id="open" class="modal">
                         <div>
                             <a href="#close" title="Закрыть" class="close">X</a>
@@ -145,6 +146,7 @@
 
                         </div>
                     </div>
+
                     <form method="post" enctype="multipart/form-data">
                   <ul class="list_download">
                     <input type="file" name="file" id="file"  />

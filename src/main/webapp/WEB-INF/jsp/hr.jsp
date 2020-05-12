@@ -120,9 +120,11 @@
                     <li><a href="#open"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#open"><i class="fa fa-linkedin"></i></a></li>
                   </ul>
+
                   <div id="open" class="modal">
                     <div>
                       <a href="#close" title="Закрыть" class="close">X</a>
+
                       <form>
                         <div class="modal-body">
                           <input type="networc" id="id" name="id" class="hidden"/>
@@ -132,26 +134,26 @@
                               <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Введите ссылку" required=""/>
                             </div>
                           </div>
+
+
                         </div>
+
                         <div class="modal-footer">
                           <button type="submit" class="login100-form-btn">Сохранить изменения</button>
                           <button class="login100-form-btn">
+
                             <a href="#close" title="Закрыть" >Отмена</a>
                           </button>
+
                         </div>
-                  <form method="post" enctype="multipart/form-data">
-                    <ul class="list_download">
-                      <input type="file" name="file" id="file" />
-                      <label for="file">Новый аватар</label>
-                      <button class="login100-form-btn" href="#" >Заменить</button>
-                    </ul>
-                  </form>
+                      </form>
+
+                    </div>
+                  </div>
+
                 </div>
-              </div>
-            </div>
           </div>
 
-            </div>
         </section>
             
               </div>
