@@ -130,7 +130,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                 Log log = new Log();
                 log.setUser(user);
                 log.setTime(new Date());
-                log.setInfo("Зарегестрирован");
+                log.setInfo("Зарегистрирован");
                 logService.addLog(log);
             }
             else

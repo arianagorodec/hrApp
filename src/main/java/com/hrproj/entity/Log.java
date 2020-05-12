@@ -26,6 +26,9 @@ public class Log {
     @Column(name="time")
     private Date time;
 
+    @Transient
+    private String ip;
+
     public Log() {
     }
 
@@ -65,5 +68,13 @@ public class Log {
 
     public Date getTime() {
         return time;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
     }
 }

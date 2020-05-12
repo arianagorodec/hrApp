@@ -59,7 +59,19 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public List<Log> getByInfo(String info) {
-        return logRepository.findByInfo(info);
+        List<Log> logs = logRepository.findByInfo(info);
+        for (Log log: logs) {
+            String ip = "";
+            String str = log.getInfo();
+            int sch = 0;
+            for (String retval : str.split(" ")) {
+                if(sch == 1)
+                    ip = retval;
+                sch++;
+            }
+            log.setIp(ip);
+        }
+        return logs;
     }
 
     public List<Log> getChanges() {

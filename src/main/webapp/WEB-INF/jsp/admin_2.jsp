@@ -103,7 +103,7 @@
                               <td>${admin.password}</td>
                               <td>
                                   <a href="#openModal-${admin.id}" class="templatemo-edit-btn">Изменить</a></td>
-                              <td><button class="templatemo-edit-btn">Удалить</button>
+                              <td><button type="submit" class="templatemo-edit-btn">Удалить</button>
                               </td>
                           </tr>
                       </form>
@@ -192,15 +192,7 @@
     <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
     
     <script type="text/javascript" src="${contextPath}/resources/js5/templatemo-script.js"></script>
-    
-<%--    <script>--%>
-<%--$("#table_button").on("click", function () {   --%>
-<%--$("#myTable > tbody:last").append("<tr><td>14</td><td>ФИО admin</td><td>admin@mail.ru</td><td><a href=\"#openModal\" class=\"templatemo-edit-btn\">Изменить</a></td><td><button class=\"templatemo-edit-btn\">Удалить</button></td></tr>");--%>
-<%--});--%>
-<%--    </script>    <!-- Templatemo Script -->--%>
-<%--<script>$('table tr').on( 'click',function(){--%>
-<%--  $(this).remove()--%>
-<%--})</script>   <!-- Templatemo Script -->--%>
+
 
   </body>
 </html>

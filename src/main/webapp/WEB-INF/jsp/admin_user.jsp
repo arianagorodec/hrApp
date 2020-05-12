@@ -98,13 +98,13 @@
                 <c:forEach items="${candidates}" var = "candidate" >
                     <form  method="post" action="/admin/user/delete">
                     <tr>
-                        <td>${candidate.id}</td>
+                        <td><input name="id" style="outline: none; border: none; background: #f9f9f9;" value="${candidate.id}" readonly></td>
                         <td>${candidate.surname} ${candidate.name}</td>
                         <td>${candidate.user.username}</td>
                         <td>${candidate.user.password}</td>
                         <td>
                             <a href="#openModal-${candidate.id}" class="templatemo-edit-btn">Изменить</a></td>
-                        <td><button class="templatemo-edit-btn">Удалить</button>
+                        <td><button type="submit" class="templatemo-edit-btn">Удалить</button>
                         </td>
                     </tr>
                     </form>
@@ -142,10 +142,8 @@
                                 <div class="modal-footer">
                                     <button type="submit" class="login100-form-btn">Сохранить</button>
                                     <button class="login100-form-btn">
-
                                         <a href="#close" title="Закрыть" >Отмена</a>
                                     </button>
-
                                 </div>
                             </div>
                         </div>
@@ -173,9 +171,6 @@
     <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
     
     <script type="text/javascript" src="${contextPath}/resources/js5/templatemo-script.js"></script>
-    <script>$('table tr').on( 'click',function(){
-  $(this).remove()
-})</script>   <!-- Templatemo Script -->
 
   </body>
 </html>

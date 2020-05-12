@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -69,6 +70,13 @@ public class HrController {
         model.addAttribute("post", employee.getPost().getPost());
         model.addAttribute("uploadPath",uploadPath);
        model.addAttribute("photo",employee.getPhoto());
+        String ipAddress ="";
+        Object details =
+                SecurityContextHolder.getContext().getAuthentication().getDetails();
+        if (details instanceof WebAuthenticationDetails)
+            ipAddress = ((WebAuthenticationDetails) details).getRemoteAddress();
+        Log log = new Log();
+        log.setInfo("Вошёл "+ ipAddress);
         return "hr";
     }
     @GetMapping("/hr/certificate")

@@ -89,7 +89,7 @@
                         <td>No.</td>
                         <td>Пользователь</td>
                         <td>Зашёл в аккаунт</td>
-                        <td>Вышел из аккаунта</td>
+                        <td>IPv6</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -98,7 +98,7 @@
                         <td>${log.id}</td>
                         <td>${log.user.username}</td>
                         <td>${log.time}</td>
-                        <td>${log.time}</td>
+                        <td>${log.ip}</td>
                       </tr>
                     </c:forEach>
                     </tbody>

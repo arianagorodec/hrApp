@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,8 +44,13 @@ public class AdminController {
         List<Log> logs = logService.getByInfo("Вошёл");
         model.addAttribute("logs", logs);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String ipAddress ="";
+        Object details =
+                SecurityContextHolder.getContext().getAuthentication().getDetails();
+        if (details instanceof WebAuthenticationDetails)
+            ipAddress = ((WebAuthenticationDetails) details).getRemoteAddress();
         Log log = new Log();
-        log.setInfo("Вошёл");
+        log.setInfo("Вошёл "+ ipAddress);
         log.setUser(userService.getByUsername(auth.getName()));
         log.setTime(new Date());
         logService.addLog(log);
