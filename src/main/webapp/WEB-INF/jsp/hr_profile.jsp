@@ -114,9 +114,9 @@
                                             <li><a href="#"><i class="fa   fa-list-alt"></i>${employee.post.post}</a></li>
                                         </ul>
                                       <ul class="list personal_social">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="${employee.facebookLink}"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="${employee.twitterLink}"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="${employee.linkedLink}"><i class="fa fa-linkedin"></i></a></li>
                                       </ul>
 
                                         <c:if test="${employee.isWorking==1}">
@@ -178,9 +178,9 @@
                                                         </ul>
 
                                                       <ul class="list personal_social">
-                                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                                        <li><a href="${candidate.facebookLink}"><i class="fa fa-facebook"></i></a></li>
+                                                        <li><a href="${candidate.twitterLink}"><i class="fa fa-twitter"></i></a></li>
+                                                        <li><a href="${candidate.linkedLink}"><i class="fa fa-linkedin"></i></a></li>
                                                       </ul>
                                                         <div>
                                                             <button id="submit-candidate" class="login100-form-btn" style="
