@@ -74,8 +74,8 @@
               В аккаунте содержится ваша личная информация. Так же здесь размещается календарь событий, который включает в себя рассписание встреч, больничных и отпусков. При помощи вашей страничке вы можете просматривать свои расчётные листы и заказывать нужные вам документы онлайн.</p>
               <p>Если вы ознакомились со справочной информацией и она вам больше не нужна, нажните на крестик в правом верхнем углу</p>             
             </div>
-            
-            
+
+
           </div>
           <div class="templatemo-flex-row flex-content-row">
             
@@ -135,6 +135,9 @@
                             <a href="#close" title="Закрыть" >Отмена</a>
                           </button>
                         </div>
+                      </form>
+                    </div>
+                  </div>
                   <form method="post" enctype="multipart/form-data">
                   <ul class="list_download">
                     <input type="file" name="file" id="file" />
@@ -149,9 +152,9 @@
 
             </div>
         </section>
-            
+
               </div>
-            </div>           
+            </div>
           </div> <!-- Second row ends -->
           
           <footer class="text-right">
@@ -166,7 +169,7 @@
     <script src="${contextPath}/resources/js3/jquery-1.11.2.min.js"></script>      <!-- jQuery -->
     <script src="${contextPath}/resources/js3/jquery-migrate-1.2.1.min.js"></script> <!--  jQuery Migrate Plugin -->
     <script src="https://www.google.com/jsapi"></script> <!-- Google Chart -->
-    
+
 
   </body>
 </html>

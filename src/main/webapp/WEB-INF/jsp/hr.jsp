@@ -134,8 +134,6 @@
                               <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Введите ссылку" required=""/>
                             </div>
                           </div>
-
-
                         </div>
 
                         <div class="modal-footer">
@@ -144,12 +142,21 @@
 
                             <a href="#close" title="Закрыть" >Отмена</a>
                           </button>
-
                         </div>
                       </form>
-
                     </div>
                   </div>
+
+                  <form method="post" enctype="multipart/form-data">
+                    <ul class="list_download">
+                      <input type="file" name="file" id="file" />
+                      <label for="file">Новый аватар</label>
+                      <button class="login100-form-btn" href="#" >Заменить</button>
+                    </ul>
+                  </form>
+                </div>
+              </div>
+            </div>
 
                 </div>
           </div>
