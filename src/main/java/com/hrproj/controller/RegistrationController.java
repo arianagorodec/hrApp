@@ -69,7 +69,7 @@ public class RegistrationController {
             ch=false;
         }
 
-        if (!userForm.getUsername().equals("")){
+        if (userForm.getUsername().equals("")){
             model.addAttribute("usernameError", "Заполните email");
             ch=false;
         }
