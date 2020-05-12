@@ -34,6 +34,12 @@ public class Candidate {
     private String gender;
     @Column(name="photo")
     private String photo;
+    @Column(name="facebookLink")
+    private String facebookLink;
+    @Column(name="linkedLink")
+    private String linkedLink;
+    @Column(name="twitterLink")
+    private String twitterLink;
     @Column(name="HrEmail")
     private String HrEmail;
     @Column(name="sessionCode")
@@ -165,5 +171,29 @@ public class Candidate {
 
     public void setSessionCode(String sessionCode) {
         this.sessionCode = sessionCode;
+    }
+
+    public String getFacebookLink() {
+        return facebookLink;
+    }
+
+    public void setFacebookLink(String facebookLink) {
+        this.facebookLink = facebookLink;
+    }
+
+    public String getLinkedLink() {
+        return linkedLink;
+    }
+
+    public void setLinkedLink(String linkedLink) {
+        this.linkedLink = linkedLink;
+    }
+
+    public String getTwitterLink() {
+        return twitterLink;
+    }
+
+    public void setTwitterLink(String twitterLink) {
+        this.twitterLink = twitterLink;
     }
 }

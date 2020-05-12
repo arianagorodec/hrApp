@@ -116,30 +116,73 @@
                   </ul>
 
                   <ul class="list personal_social">
-                    <li><a href="#open"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#open"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#open"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#open1"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#open2"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#open3"><i class="fa fa-linkedin"></i></a></li>
                   </ul>
 
-                  <div id="open" class="modal">
+                  <div id="open1" class="modal">
                     <div>
                       <a href="#close" title="Закрыть" class="close">X</a>
+                      <form method="post" action="/hr/facebook">
+                        <div class="modal-body">
+                          <input type="networc" id="id2" name="id" class="hidden"/>
+                          <div class="form-group required">
+                            <label  class="col-sm-3 control-label" style="color:#606061 ">Ссылка на социальную сеть</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" id="facebookLink" name="facebookLink" placeholder="Введите ссылку" value="${facebook}" required=""/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="login100-form-btn">Сохранить изменения</button>
+                          <button class="login100-form-btn">
+                            <a href="#close" title="Закрыть" >Отмена</a>
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
 
-                      <form>
+                  <div id="open2" class="modal">
+                    <div>
+                      <a href="#close" title="Закрыть" class="close">X</a>
+                      <form method="post" action="/hr/twitter">
+                        <div class="modal-body">
+                          <input type="networc" id="id3" name="id" class="hidden"/>
+                          <div class="form-group required">
+                            <label  class="col-sm-3 control-label" style="color:#606061 ">Ссылка на социальную сеть</label>
+                            <div class="col-sm-9">
+                              <input type="text" class="form-control" id="twitterLink" name="twitterLink" placeholder="Введите ссылку" value="${twitter}" required=""/>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="login100-form-btn">Сохранить изменения</button>
+                          <button class="login100-form-btn">
+                            <a href="#close" title="Закрыть" >Отмена</a>
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
+                  <div id="open3" class="modal">
+                    <div>
+                      <a href="#close" title="Закрыть" class="close">X</a>
+                      <form method="post" action="/hr/linked">
                         <div class="modal-body">
                           <input type="networc" id="id" name="id" class="hidden"/>
                           <div class="form-group required">
                             <label  class="col-sm-3 control-label" style="color:#606061 ">Ссылка на социальную сеть</label>
                             <div class="col-sm-9">
-                              <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Введите ссылку" required=""/>
+                              <input type="text" class="form-control" id="linkedinLink" name="linkedinLink" placeholder="Введите ссылку" value="${linked}" required=""/>
                             </div>
                           </div>
                         </div>
-
                         <div class="modal-footer">
                           <button type="submit" class="login100-form-btn">Сохранить изменения</button>
                           <button class="login100-form-btn">
-
                             <a href="#close" title="Закрыть" >Отмена</a>
                           </button>
                         </div>

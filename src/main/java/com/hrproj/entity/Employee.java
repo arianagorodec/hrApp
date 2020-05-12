@@ -50,6 +50,12 @@ public class Employee {
     private int isWorking;
     @Column(name="photo")
     private String photo;
+    @Column(name="facebookLink")
+    private String facebookLink;
+    @Column(name="linkedLink")
+    private String linkedLink;
+    @Column(name="twitterLink")
+    private String twitterLink;
 
     @OneToOne(cascade = CascadeType.ALL)
     @NotFound(action = NotFoundAction.IGNORE)
@@ -253,5 +259,29 @@ public class Employee {
 
     public void setCertificates(Set<Certificate> certificates) {
         this.certificates = certificates;
+    }
+
+    public String getFacebookLink() {
+        return facebookLink;
+    }
+
+    public void setFacebookLink(String facebookLink) {
+        this.facebookLink = facebookLink;
+    }
+
+    public String getLinkedLink() {
+        return linkedLink;
+    }
+
+    public void setLinkedLink(String linkedLink) {
+        this.linkedLink = linkedLink;
+    }
+
+    public String getTwitterLink() {
+        return twitterLink;
+    }
+
+    public void setTwitterLink(String twitterLink) {
+        this.twitterLink = twitterLink;
     }
 }

@@ -61,6 +61,9 @@ public class UserController {
        model.addAttribute("gender", candidate.getGender());
         model.addAttribute("uploadPath",uploadPath);
        model.addAttribute("photo",candidate.getPhoto());
+        model.addAttribute("facebook",candidate.getFacebookLink());
+        model.addAttribute("twitter",candidate.getTwitterLink());
+        model.addAttribute("linked",candidate.getLinkedLink());
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String ipAddress ="";
         Object details =
@@ -129,6 +132,35 @@ public class UserController {
         return "redirect:/user";
     }
 
+    @PostMapping("/user/facebook")
+    public String addFacebook(@RequestParam("facebookLink") String link) throws IOException {
+        Candidate candidate = candidateService.getInfoCandidate();
+        if (link != null) {
+            candidate.setFacebookLink(link);
+            candidateService.updateCandidate(candidate);
+        }
+        return "redirect:/user";
+    }
+
+    @PostMapping("/user/linked")
+    public String addLinked(@RequestParam("linkedLink") String link) throws IOException {
+        Candidate candidate = candidateService.getInfoCandidate();
+        if (link != null) {
+            candidate.setLinkedLink(link);
+            candidateService.updateCandidate(candidate);
+        }
+        return "redirect:/user";
+    }
+
+    @PostMapping("/user/twitter")
+    public String addtwitter(@RequestParam("twitterLink") String link) throws IOException {
+        Candidate candidate = candidateService.getInfoCandidate();
+        if (link != null) {
+            candidate.setTwitterLink(link);
+            candidateService.updateCandidate(candidate);
+        }
+        return "redirect:/user";
+    }
 
     @PostMapping("/user/quest")
     public String  questUser(@ModelAttribute("anketa") @Valid Anketa anketa, BindingResult bindingResult,

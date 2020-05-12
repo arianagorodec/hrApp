@@ -71,6 +71,9 @@ public class HrController {
         model.addAttribute("post", employee.getPost().getPost());
         model.addAttribute("uploadPath",uploadPath);
        model.addAttribute("photo",employee.getPhoto());
+        model.addAttribute("facebook",employee.getFacebookLink());
+        model.addAttribute("twitter",employee.getTwitterLink());
+        model.addAttribute("linked",employee.getLinkedLink());
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String ipAddress ="";
         Object details =
@@ -255,6 +258,36 @@ public class HrController {
             file.transferTo(new File(uploadPathJ+"/"+resultFileName));
 
             employee.setPhoto(resultFileName);
+            employeeService.updateEmployee(employee);
+        }
+        return "redirect:/hr";
+    }
+
+    @PostMapping("/hr/facebook")
+    public String addFacebook(@RequestParam("facebookLink") String link) throws IOException {
+        Employee employee = employeeService.getInfoEmployee();
+        if (link != null) {
+            employee.setFacebookLink(link);
+            employeeService.updateEmployee(employee);
+        }
+        return "redirect:/hr";
+    }
+
+    @PostMapping("/hr/linked")
+    public String addLinked(@RequestParam("linkedLink") String link) throws IOException {
+        Employee employee = employeeService.getInfoEmployee();
+        if (link != null) {
+            employee.setLinkedLink(link);
+            employeeService.updateEmployee(employee);
+        }
+        return "redirect:/hr";
+    }
+
+    @PostMapping("/hr/twitter")
+    public String addtwitter(@RequestParam("twitterLink") String link) throws IOException {
+        Employee employee = employeeService.getInfoEmployee();
+        if (link != null) {
+            employee.setTwitterLink(link);
             employeeService.updateEmployee(employee);
         }
         return "redirect:/hr";
