@@ -71,13 +71,18 @@ public class HrController {
         model.addAttribute("post", employee.getPost().getPost());
         model.addAttribute("uploadPath",uploadPath);
        model.addAttribute("photo",employee.getPhoto());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String ipAddress ="";
         Object details =
                 SecurityContextHolder.getContext().getAuthentication().getDetails();
-        if (details instanceof WebAuthenticationDetails)
+        if (details instanceof WebAuthenticationDetails) {
             ipAddress = ((WebAuthenticationDetails) details).getRemoteAddress();
-        Log log = new Log();
-        log.setInfo("Вошёл "+ ipAddress);
+            Log log = new Log();
+            log.setInfo("Вошёл " + ipAddress);
+            log.setUser(userService.getByUsername(auth.getName()));
+            log.setTime(new Date());
+            logService.addLog(log);
+        }
         return "hr";
     }
     @GetMapping("/hr/certificate")

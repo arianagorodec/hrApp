@@ -65,13 +65,14 @@ public class UserController {
         String ipAddress ="";
         Object details =
                 SecurityContextHolder.getContext().getAuthentication().getDetails();
-        if (details instanceof WebAuthenticationDetails)
+        if (details instanceof WebAuthenticationDetails) {
             ipAddress = ((WebAuthenticationDetails) details).getRemoteAddress();
-        Log log = new Log();
-        log.setInfo("Вошёл "+ ipAddress);
-        log.setUser(userService.getByUsername(auth.getName()));
-        log.setTime(new Date());
-        logService.addLog(log);
+            Log log = new Log();
+            log.setInfo("Вошёл " + ipAddress);
+            log.setUser(userService.getByUsername(auth.getName()));
+            log.setTime(new Date());
+            logService.addLog(log);
+        }
         return "user";
     }
     @GetMapping("/user/quest")
