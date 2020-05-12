@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -108,6 +109,7 @@ public class WorkerController {
         model.addAttribute("resumeForm", timetables);
         List<Timetable> events = timetableService.getByIdEmployee(employee.getId());
         model.addAttribute("eventForm", events);
+//        model.addAttribute("dateError", "");
         return "employee_event";
     }
     @GetMapping("/worker/report")
@@ -162,7 +164,7 @@ public class WorkerController {
                            @RequestParam("timeStart") String timeStart,
                            @RequestParam("dateEnd") String dateEnd,
                            @RequestParam("timeEnd") String timeEnd,
-                           @RequestParam("type") String type) {
+                           @RequestParam("type") String type, Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Employee employee = employeeService.getByEmail(auth.getName());
         Timetable timetable = new Timetable();
@@ -185,8 +187,10 @@ public class WorkerController {
             timetable.setType(type);
             timetable.setColor(colors[random.nextInt(colors.length)]);
             timetableService.addTimetable(timetable);
-        } catch (ParseException e) {
+        } catch (ParseException|DateTimeParseException e) {
             e.printStackTrace();
+            model.addAttribute("dateError", "Неверный ввод даты или времени");
+            return "employee_event";
         }
         return "redirect:/worker/event";
     }

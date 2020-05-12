@@ -171,7 +171,6 @@
                           </div>
                         </div>
 
-
                         <div class="form-group required">
                           <label for="Время" class="col-sm-3 control-label">Время начала события</label>
                           <div class="col-sm-9">
@@ -185,9 +184,9 @@
                             <input type="text" class="form-control" id="startedOff" name="timeEnd" placeholder="12:00" required="">
                           </div>
                         </div>
-
-
                       </div>
+
+                      <div><p style="color:red;">${dateError}</p></div>
 
                       <div class="modal-footer2">
                         <button type="submit" class="login100-form-btn">Сохранить изменения</button>

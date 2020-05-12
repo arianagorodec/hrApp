@@ -26,6 +26,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.*;
 
 @Controller
@@ -384,7 +385,8 @@ public class HrController {
                            @RequestParam("timeStart") String timeStart,
                            @RequestParam("dateEnd") String dateEnd,
                            @RequestParam("timeEnd") String timeEnd,
-                           @RequestParam("type") String type) {
+                           @RequestParam("type") String type,
+                           Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Employee employee = employeeService.getByEmail(auth.getName());
         Timetable timetable = new Timetable();
@@ -407,8 +409,10 @@ public class HrController {
             timetable.setType(type);
             timetable.setColor(colors[random.nextInt(colors.length)]);
             timetableService.addTimetable(timetable);
-        } catch (ParseException e) {
+        } catch (ParseException| DateTimeParseException e) {
             e.printStackTrace();
+            model.addAttribute("dateError", "Неверный ввод даты или времени");
+            return "hr_event";
         }
         return "redirect:/hr/event";
     }
