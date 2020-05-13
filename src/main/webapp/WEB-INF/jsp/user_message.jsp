@@ -91,10 +91,13 @@
             <div class="container box_1620">
 <div class="chat">
 <div class="chat-header clearfix">
-<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />
+    <c:if test="${not empty photo}">
+        <img src="/photoUser/${photo}" width="55" height="55" alt="avatar">
+    </c:if>
+<%--<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />--%>
 <div class="chat-about">
 <div class="chat-with">Чат с HR сотрудником</div>
-<div class="chat-num-messages">всего 10 сообщений</div>
+<div class="chat-num-messages">всего Х сообщений</div>
 </div>
 <i class="fa fa-star"></i>
 </div> 

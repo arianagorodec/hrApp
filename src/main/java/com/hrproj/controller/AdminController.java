@@ -245,7 +245,7 @@ public class AdminController {
         log.setTime(new Date());
         logService.addLog(log);
 
-        return "redirect:/admin/user";
+        return "redirect:/admin/2";
     }
 
     @PostMapping("/admin/2/add")

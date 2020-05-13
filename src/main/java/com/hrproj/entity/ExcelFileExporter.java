@@ -272,7 +272,7 @@ public class ExcelFileExporter{
             cell.setCellValue("4");
             cell.setCellStyle(aroundCellStyle);
             cell = rows.get(14).createCell(4);
-            cell.setCellValue("5б");
+            cell.setCellValue("5");
             cell.setCellStyle(aroundCellStyle);
             cell = rows.get(14).createCell(5);
             cell.setCellValue("6");

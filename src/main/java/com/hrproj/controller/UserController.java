@@ -99,6 +99,7 @@ public class UserController {
         model.addAttribute("to",  candidate.getHrEmail());
         Employee employeeTo = employeeService.getByEmail(candidate.getHrEmail());
         Candidate candidateTo = candidateService.getByEmail(candidate.getHrEmail());
+        model.addAttribute("photo",  employeeTo.getPhoto());
         List<ChatMessage> messagesList = chatMessageService.getByToTwice(employeeTo.getUser().getId(), candidate.getUser().getId());
         Comparator<ChatMessage> comparator = new Comparator<ChatMessage>() {
             @Override

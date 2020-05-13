@@ -103,7 +103,10 @@
       <ul class="list">
 <c:forEach items="${candidates}" var = "candidate" >
         <li class="clearfix">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />
+            <c:if test="${not empty candidate.photo}">
+                    <img src="/photoUser/${candidate.photo}" width="55" height="55" alt="avatar">
+            </c:if>
+<%--          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01.jpg" alt="avatar" />--%>
           <div class="about">
             <div class="name"><a href="/hr/message-${candidate.sessionCode}">${candidate.name} ${candidate.surname}</a></div>
             <div class="status">
@@ -120,8 +123,10 @@
 <div class="chat">
 
 <div class="chat-header clearfix">
-
-<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />
+    <c:if test="${not empty photo}">
+        <img src="/photoUser/${photo}" width="55" height="55" alt="avatar">
+    </c:if>
+<%--<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar" />--%>
 <div class="chat-about">
 
 <c:if test = "${candidate != null}">

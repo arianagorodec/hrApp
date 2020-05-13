@@ -227,6 +227,7 @@ public class HrController {
         List<Candidate> candidates = candidateService.getByHREmail(employee.getEmail());
         model.addAttribute("candidates", candidates);
         Candidate candidate = candidateService.getBySessionCode(code);
+        model.addAttribute("photo",candidate.getPhoto());
         model.addAttribute("candidate",candidate.getName()+" "+candidate.getSurname());
         model.addAttribute("code",code);
         model.addAttribute("username", employee.getUser().getUsername());
