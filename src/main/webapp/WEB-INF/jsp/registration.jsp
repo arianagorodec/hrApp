@@ -212,7 +212,6 @@
                 </p>
             </fieldset>
             <div >
-						
 						<a class="txt2" href="/">
 							Выход
 						</a>

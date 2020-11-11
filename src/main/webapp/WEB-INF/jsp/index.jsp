@@ -52,7 +52,6 @@
 					<span class="login100-form-title">
 						Member Login
 					</span>
-
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="username" placeholder="Email">
 						<span class="focus-input100"></span>
@@ -68,7 +67,6 @@
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
-
 					<div class="container-login100-form-btn">
 <%--						<sec:authorize access="!isAuthenticated()">--%>
 						<button class="login100-form-btn" type="submit">

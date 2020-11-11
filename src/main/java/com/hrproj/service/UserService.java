@@ -17,6 +17,4 @@ public interface UserService {
         User editUser(User user);
 
         List<User> getAdmin();
-
-        //List<User> getAll();
 }
