@@ -1,0 +1,10 @@
+INSERT INTO `hr_support`.`user` (`id_user`, `password`, `role`, `username`) VALUES ('4', '$2a$10$XoX8XCHpFYLeCJhBj7um3eHnnxKCgCD83pO8OtLt1IrqmZ2XhfnR.', '1', 'admin');
+INSERT INTO `hr_support`.`user` (`id_user`, `password`, `role`, `username`) VALUES ('5', '$2a$10$uhi8JMLQyRxul3ioLom8w.TrN4ZUZaKZlWJonpI1XNfl6p9Si.jvG', '2', 'margo@gmail.com');
+INSERT INTO `hr_support`.`user` (`id_user`, `password`, `role`, `username`) VALUES ('6', '$2a$10$deEMV9CZqLopABUQv1aDLu6X7FKVFfxz1LN.JK4Ky4.dq9.OkDFFe', '2', 'arianagorodec@gmail.com');
+INSERT INTO `hr_support`.`user` (`id_user`, `password`, `role`, `username`) VALUES ('7', '$2a$10$m2.unouixdytzKgg8gae9OW5hKhWQDozPtiLBQlJlNfHNWF95z6Ce', '2', 'regentronchik@gmail.com');
+INSERT INTO `hr_support`.`user` (`id_user`, `password`, `role`, `username`) VALUES ('8', '$2a$10$8Cks6ZjyBH.uowTZSND4f.BiJuy60B6wAKbrcKRCI4wt6aY4tUz36', '3', 'tool@gmail.com');
+INSERT INTO `hr_support`.`user` (`id_user`, `password`, `role`, `username`) VALUES ('9', '$2a$10$auCnWuIgyP6J0A10uX/J4.Md7zbc75J/KP6cN9UrcNxbQBBrLuUbi', '0', 'dariavol@gmail.com');
+INSERT INTO `hr_support`.`user` (`id_user`, `password`, `role`, `username`) VALUES ('10', '$2a$10$l.e8Wv.ADKjJpubAVw.HEeovUGfwAt3CIIcgz/x4ddAA6vxHW9Ube', '0', 'nikpetrov@gmail.com');
+INSERT INTO `hr_support`.`user` (`id_user`, `password`, `role`, `username`) VALUES ('12', '$2a$10$z5QOaabekFC7gGFPqvFe8uli/P30ssS7UiHragEicOHhfSMIcBzTu', '1', 'admin1');
+INSERT INTO `hr_support`.`user` (`id_user`, `password`, `role`, `username`) VALUES ('23', '$2a$10$NEi.qRDhyAetyCnlUbFlV.kOOCZnUeitqnQUNulud4b8S93gvW6jy', '0', 'paveltopor@gmail.com');
+INSERT INTO `hr_support`.`user` (`id_user`, `password`, `role`, `username`) VALUES ('24', '$2a$10$IJXYFT/vdHdXj7HbjkrujuwOJGL7lxCwmdjeT6k/05MbofMawAdam', '1', 'admin2');

@@ -161,7 +161,6 @@
               </div>
             </div>           
           </div> <!-- Second row ends -->
-          
           <footer class="text-right">
             <p>КП &copy; 2020 БГУИР
             | Developers: Кошман.В.Д. Городецкая А.М.</p>

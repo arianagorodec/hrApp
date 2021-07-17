@@ -127,11 +127,11 @@ public class UserServiceImpl implements UserDetailsService, UserService {
                 employee.setEmail(user.getUsername());
                 employee.setUser(user);
                 employeeRepository.save(employee);
-                Log log = new Log();
-                log.setUser(user);
-                log.setTime(new Date());
-                log.setInfo("Зарегистрирован");
-                logService.addLog(log);
+//                Log log = new Log();
+//                log.setUser(user);
+//                log.setTime(new Date());
+//                log.setInfo("Зарегистрирован");
+//                logService.addLog(log);
             }
             else
                 return false;
